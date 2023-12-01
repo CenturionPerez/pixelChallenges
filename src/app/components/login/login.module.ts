@@ -1,14 +1,14 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from "./login.component";
-import { CreateAccountComponent } from "./createAccount/createAccount.component";
-import { InitiateAccountComponent } from "./initiateAccount/initiateAccount.component";
+import { InitiateAccountComponent } from "./init/init.component";
 import { MaterialModule } from "src/app/material/material.module";
+import { RegisterComponent } from "./Register/register.component";
 
 @NgModule({
     declarations: [
         LoginComponent,
-        CreateAccountComponent,
+        RegisterComponent,
         InitiateAccountComponent
     ],
     imports: [
