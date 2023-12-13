@@ -1,17 +1,15 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from "../../auth/pages/login/login.component";
-import { InitComponent } from "../../auth/pages/init/init.component";
+import { InitComponent } from "../auth/pages/init/init.component";
 import { MaterialModule } from "src/app/material/material.module";
-import { RegisterComponent } from "../../auth/pages/Register/register.component";
-import { PagesRoutingModule } from "./pages-routing.module";
-import { ClassificationComponent } from "./classification/classification.component";
+import { ClassificationComponent } from "./pages/classification/classification.component";
+import { PagesRoutingModule } from "./pixelChallenge-routing.module";
+
 @NgModule({
     declarations: [
-        LoginComponent,
-        RegisterComponent,
-        InitComponent,
-        ClassificationComponent
+        ClassificationComponent,
+
+
     ],
     imports: [
         CommonModule,
@@ -19,9 +17,9 @@ import { ClassificationComponent } from "./classification/classification.compone
         PagesRoutingModule
     ],
     exports: [
-        LoginComponent
+
     ],
     providers: [],
-    bootstrap: [LoginComponent]
+    bootstrap: [InitComponent]
   })
   export class PagesModule { }
