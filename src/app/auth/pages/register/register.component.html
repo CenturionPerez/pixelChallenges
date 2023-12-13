@@ -21,7 +21,7 @@
                     <mat-label>Nacionalidad</mat-label>
                     <input matInput>
                 </mat-form-field>
-                
+
                 <mat-form-field>
                     <mat-label>
                         Contraseña
@@ -34,6 +34,11 @@
                 <button mat-raised-button>
                     Registrarse
                     <mat-icon>login</mat-icon>
+                </button><br>
+
+                <button mat-raised-button (click)="navigateBack()">
+                  Volver
+                  <mat-icon>arrow_back</mat-icon>
                 </button>
 
             </mat-card-content>
