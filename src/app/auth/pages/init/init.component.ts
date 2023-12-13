@@ -10,8 +10,10 @@ export class InitComponent {
 
     constructor(private router: Router){}
 
-    navigateToRegister(){
-      this.router.navigateByUrl('/login/register');
+    public navigateToRegister(){
+      this.router.navigateByUrl('/register');
     }
+
+    public navigateToInvitedMode() { }
 
 }
