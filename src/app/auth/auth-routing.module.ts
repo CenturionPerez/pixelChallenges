@@ -14,6 +14,10 @@ const routes: Routes = [
                 component: RegisterComponent,
             },
             {
+              path: '',
+              component: InitComponent,
+            },
+            {
                 path: 'init',
                 component: InitComponent,
             }
