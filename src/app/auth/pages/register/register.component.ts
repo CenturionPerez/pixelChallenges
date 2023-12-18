@@ -10,7 +10,7 @@ export class RegisterComponent {
   constructor(private router: Router){}
 
     public navigateBack(){
-      this.router.navigateByUrl('/init')
+      this.router.navigateByUrl('/init');
     }
 
 }
