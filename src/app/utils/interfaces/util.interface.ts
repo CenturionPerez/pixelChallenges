@@ -8,3 +8,5 @@ interface ResponseService {
     data: any,
     error: any
 }
+
+export { RequestService, ResponseService }

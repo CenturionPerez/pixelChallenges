@@ -17,3 +17,19 @@
     grid-template-columns: 100%;
     grid-template-rows: auto;
 }
+
+::ng-deep mat-snack-bar-container.snackbarOk > div {
+    background-color: greenyellow !important;
+    margin-top: 100px !important;
+}
+
+::ng-deep mat-snack-bar-container.snackbarKo > div {
+    background: red !important;
+    margin-top: 100px;
+}
+
+::ng-deep mat-snack-bar-container.snackbarKo ::ng-deep mat-snack-bar-container.snackbarOk > button {
+    background: #F44336;
+    color: white !important;
+    border: none;
+}
