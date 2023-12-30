@@ -12,6 +12,12 @@
     border-radius: 50px;
 }
 
+.card-title {
+    font-family: 'Kanit', sans-serif; 
+    font-size: 24px; 
+    font-weight: bolder;
+}
+
 .card-c {
     display: grid;
     grid-template-columns: 100%;
