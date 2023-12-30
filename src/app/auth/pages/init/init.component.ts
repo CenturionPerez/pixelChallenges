@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ClientAuthentication } from '../../interfaces/auth.interface';
+import { literals } from 'src/app/utils/interfaces/util.constants';
+import { Literals } from 'src/app/utils/interfaces/util.interface';
 
 @Component({
   selector: 'init',
   templateUrl: './init.component.html',
   styleUrls: ['./init.component.css']
 })
-export class InitComponent implements OnInit{ 
 
-  public errorInitForm: boolean = false;
-  public initForm: FormGroup = this.fb.group({
+export class InitComponent implements OnInit{ 
+  
+  public literals: Literals = literals;
+  public initForm: FormGroup = new FormGroup({
     email: new FormControl('', [
         Validators.email,
         Validators.required
@@ -25,7 +29,6 @@ export class InitComponent implements OnInit{
   constructor(
     private router: Router, 
     private authService: AuthService, 
-    private fb: FormBuilder,
     private _snackbar: MatSnackBar){}
 
   ngOnInit(): void {
@@ -40,35 +43,33 @@ export class InitComponent implements OnInit{
 
   public access(): void {
     if(this.initForm.valid){
-      this.errorInitForm = false;
-      const request = {
-        email: this.initForm.get('email')?.value,
-        password: this.initForm.get('password')?.value
-      }
       this.authService.showAuthSpinner(true);
-      this.authService.verifyUser(request).subscribe((resp) => {
+      this.authService.verifyUser(this.prepareRequest()).subscribe((resp) => {
         this.authService.showAuthSpinner(false);
         if(resp){
           this.router.navigateByUrl('/init');
-          this.generateSnackBar(false, 'Inicio de sesión completado')
+          this.generateSnackBar(false, literals.init_session_ok)
         }else{
-          this.router.navigateByUrl('/404');
-          this.generateSnackBar(true, 'Por favor, compruebe los campos del formulario')
+          this.generateSnackBar(true, literals.init_sesion_ko)
         }
       });
     }else{
-      this.errorInitForm = true;
-      this.generateSnackBar(true, 'Por favor, compruebe los campos del formulario')
+      this.generateSnackBar(true, literals.error_form)
     }
   }
 
   private generateSnackBar(error: boolean, message: string): void {
-    this._snackbar.open(message, 'Aceptar', {
-      duration: 200000,
-      panelClass: error? ['snackbarOk']: ['snackbarKo']
+    this._snackbar.open(message, literals.accept, {
+      duration: 10000,
+      panelClass: error? ['snackbarKo']: ['snackbarOk']
     });
   }
 
-  public prepareRequest(): void {}
+  private prepareRequest(): ClientAuthentication {
+    return {
+      email: this.initForm.get('email')?.value,
+      password: this.initForm.get('password')?.value
+    }
+  }
 
 }

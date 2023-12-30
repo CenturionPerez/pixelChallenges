@@ -6,9 +6,9 @@ import { LayoutComponent } from "./pages/layout/layout.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { InitComponent } from "./pages/init/init.component";
 import { AuthService } from "./services/auth.service";
+import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
 import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
-
 
 @NgModule({
     declarations: [
@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from "@angular/forms";
         CommonModule,
         MaterialModule,
         AuthRoutingModule,
+        MatSelectCountryModule,
         HttpClientModule,
         ReactiveFormsModule,
     ],

@@ -7,28 +7,34 @@
             </mat-card-header>
             <mat-card-content class="card-c">
 
-                <mat-form-field>
+                <mat-form-field [formGroup]="registerForm">
                     <mat-label>Nombre</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="username">
+                    <mat-error>{{literals.error_name}}</mat-error>
                 </mat-form-field>
 
-                <mat-form-field>
+                <mat-form-field [formGroup]="registerForm">
                     <mat-label>Email</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="email">
+                    <mat-error>{{literals.error_email}}</mat-error>
                 </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>Nacionalidad</mat-label>
-                    <input matInput>
-                </mat-form-field>
+                <form [formGroup]="registerForm">
+                    <mat-select-country class="select-countries"
+                        formControlName="nationality"
+                        appearance="fill" 
+                        label="Nacionalidad"
+                        placeHolder="Seleccione nacionalidad">
+                    </mat-select-country>
+                </form>
 
-                <mat-form-field>
+                <mat-form-field [formGroup]="registerForm">
                     <mat-label>
                         Contraseña
                         <mat-icon>visibility_off</mat-icon>
                     </mat-label>
-                    <input matInput type="password">
-
+                    <input matInput type="password" formControlName="password">
+                    <mat-error>{{literals.error_password}}</mat-error>
                 </mat-form-field>
 
                 <button mat-raised-button>

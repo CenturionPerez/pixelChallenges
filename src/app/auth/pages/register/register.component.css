@@ -17,3 +17,11 @@
     grid-template-columns: 100%;
     grid-template-rows: auto;
 }
+
+mat-error {
+    font-weight: bold;
+}
+
+::ng-deep .select-countries mat-form-field.mat-mdc-form-field {
+    width: 100%;
+}

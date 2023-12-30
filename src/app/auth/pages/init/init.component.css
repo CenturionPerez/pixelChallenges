@@ -12,24 +12,32 @@
     border-radius: 50px;
 }
 
+.card-title {
+    font-family: 'Kanit', sans-serif; 
+    font-size: 24px; 
+    font-weight: bolder;
+}
+
 .card-c {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto;
 }
 
+mat-error {
+    font-weight: bold;
+}
+
 ::ng-deep mat-snack-bar-container.snackbarOk > div {
-    background-color: greenyellow !important;
-    margin-top: 100px !important;
+    background-color: #2dc186 !important;
 }
 
 ::ng-deep mat-snack-bar-container.snackbarKo > div {
-    background: red !important;
-    margin-top: 100px;
+    background-color: #fd4134 !important;
 }
 
-::ng-deep mat-snack-bar-container.snackbarKo ::ng-deep mat-snack-bar-container.snackbarOk > button {
-    background: #F44336;
+::ng-deep simple-snack-bar div[matsnackbarlabel] {
     color: white !important;
-    border: none;
+    font-size: 16px !important;
+    font-weight: bold;
 }
