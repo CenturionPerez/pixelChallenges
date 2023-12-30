@@ -25,3 +25,17 @@ mat-error {
 ::ng-deep .select-countries mat-form-field.mat-mdc-form-field {
     width: 100%;
 }
+
+::ng-deep mat-snack-bar-container.snackbarOk > div {
+    background-color: #2dc186 !important;
+}
+
+::ng-deep mat-snack-bar-container.snackbarKo > div {
+    background-color: #fd4134 !important;
+}
+
+::ng-deep simple-snack-bar div[matsnackbarlabel] {
+    color: white !important;
+    font-size: 16px !important;
+    font-weight: bold;
+}

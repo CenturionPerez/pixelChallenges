@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   private initCall({apiUrl, data} : RequestService): Observable<boolean> {
-    console.log(JSON.stringify(data));
+    console.log(data);
     return this.http.post<ResponseService>(this.urlApi + apiUrl, data).pipe(
       map((resp) => {
         return resp.data as boolean;

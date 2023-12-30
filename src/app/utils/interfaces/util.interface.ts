@@ -16,8 +16,10 @@ interface Literals {
     error_password: string,
     error_form: string,
     error_name: string,
+    error_msisdn: string
     init_session_ok: string,
-    init_sesion_ko: string
+    register_session_ok: string,
+    login_sesion_ko: string
 }
 
 export { RequestService, ResponseService, Literals }

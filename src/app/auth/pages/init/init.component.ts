@@ -50,7 +50,7 @@ export class InitComponent implements OnInit{
           this.router.navigateByUrl('/init');
           this.generateSnackBar(false, literals.init_session_ok)
         }else{
-          this.generateSnackBar(true, literals.init_sesion_ko)
+          this.generateSnackBar(true, literals.login_sesion_ko)
         }
       });
     }else{

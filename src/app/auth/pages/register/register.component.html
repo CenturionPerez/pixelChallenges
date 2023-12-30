@@ -29,6 +29,12 @@
                 </form>
 
                 <mat-form-field [formGroup]="registerForm">
+                    <mat-label>Telefono</mat-label>
+                    <input matInput formControlName="msisdn">
+                    <mat-error>{{literals.error_msisdn}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field [formGroup]="registerForm">
                     <mat-label>
                         Contraseña
                         <mat-icon>visibility_off</mat-icon>
@@ -37,7 +43,7 @@
                     <mat-error>{{literals.error_password}}</mat-error>
                 </mat-form-field>
 
-                <button mat-raised-button>
+                <button mat-raised-button (click)="register()">
                     Registrarse
                     <mat-icon>login</mat-icon>
                 </button><br>
