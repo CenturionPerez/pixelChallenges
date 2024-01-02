@@ -47,7 +47,7 @@ export class InitComponent implements OnInit{
       this.authService.verifyUser(this.prepareRequest()).subscribe((resp) => {
         this.authService.showAuthSpinner(false);
         if(resp){
-          this.router.navigateByUrl('/init');
+          this.router.navigateByUrl('/pixelchallenge/welcome');
           this.generateSnackBar(false, literals.init_session_ok)
         }else{
           this.generateSnackBar(true, literals.login_sesion_ko)

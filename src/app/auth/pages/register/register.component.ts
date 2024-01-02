@@ -69,7 +69,7 @@ export class RegisterComponent {
         this.authService.createUser(this.prepareRequest()).subscribe((resp) => {
           this.authService.showAuthSpinner(false);
           if(resp){
-            this.router.navigateByUrl('/init');
+            this.router.navigateByUrl('/pixelchallenge/welcome');
             this.generateSnackBar(false, literals.register_session_ok)
           }else{
             this.generateSnackBar(true, literals.login_sesion_ko)
