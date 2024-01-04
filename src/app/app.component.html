@@ -1,15 +1,32 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+</head>
+<body>
+  <main class="display">
+    <nav>
+      <div class="hd">
 
-<main class="display">
-    <div class="hd">
-        <h1>Bienvenido a PixelChallenge</h1>
-    </div>
-    
+        <ul class="nav-links">
+          <li class="link"><a href="#">Clasificación</a></li>
+          <li class="link"><a href="#">Perfil</a></li>
+          <li class="link"><a href="#">Modo un jugador</a></li>
+          <li class="link"><a href="#">Tienda</a></li>
+        </ul>
+
+
+      </div>
+
+      <button class="btn" (click)="gotoinit()">Iniciar Sesión</button>
+    </nav>
+
+
+
     <div class="content">
-        <img src="../assets/pixelWallpaper.jpg" alt="Join to PixelChallenge">
-        <router-outlet></router-outlet> 
+      <router-outlet></router-outlet>
     </div>
 
-    <div class="ft">
-        <p>Quienes somos</p>
-    </div>
-</main>
+      <div class="ft">
+          <p>Quienes somos</p>
+      </div>
+  </main>
+</body>
