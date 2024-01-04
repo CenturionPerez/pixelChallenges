@@ -3,35 +3,47 @@
     <div class="card">
         <mat-card class="" style="background-color: white;">
             <mat-card-header>
-                <mat-card-title>Registrarse</mat-card-title>
+                <mat-card-title class="card-title">Registrarse</mat-card-title>
             </mat-card-header>
             <mat-card-content class="card-c">
 
-                <mat-form-field>
+                <mat-form-field [formGroup]="registerForm">
                     <mat-label>Nombre</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="username">
+                    <mat-error>{{literals.error_name}}</mat-error>
                 </mat-form-field>
 
-                <mat-form-field>
+                <mat-form-field [formGroup]="registerForm">
                     <mat-label>Email</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="email">
+                    <mat-error>{{literals.error_email}}</mat-error>
                 </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>Nacionalidad</mat-label>
-                    <input matInput>
+                <form [formGroup]="registerForm">
+                    <mat-select-country class="select-countries"
+                        formControlName="nationality"
+                        appearance="fill" 
+                        label="Nacionalidad"
+                        placeHolder="Seleccione nacionalidad">
+                    </mat-select-country>
+                </form>
+
+                <mat-form-field [formGroup]="registerForm">
+                    <mat-label>Telefono</mat-label>
+                    <input matInput formControlName="msisdn">
+                    <mat-error>{{literals.error_msisdn}}</mat-error>
                 </mat-form-field>
 
-                <mat-form-field>
+                <mat-form-field [formGroup]="registerForm">
                     <mat-label>
                         Contraseña
                         <mat-icon>visibility_off</mat-icon>
                     </mat-label>
-                    <input matInput type="password">
-
+                    <input matInput type="password" formControlName="password">
+                    <mat-error>{{literals.error_password}}</mat-error>
                 </mat-form-field>
 
-                <button mat-raised-button>
+                <button mat-raised-button (click)="register()">
                     Registrarse
                     <mat-icon>login</mat-icon>
                 </button><br>

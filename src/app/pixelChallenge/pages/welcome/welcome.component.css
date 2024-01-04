@@ -1,0 +1,40 @@
+.welcome_container {
+  color: rgb(251, 251, 251);
+}
+
+.d_header_w {
+  margin-left: 70%;
+  width: 400px;
+}
+
+.d_first_header_w {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.d_sub_header_w {
+  font-size: large;
+}
+
+.characterstic_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4fr;
+}
+
+.characterstic_container > div {
+  display: flex;
+  margin-left: 70%;
+  margin-bottom: 20px;
+}
+
+.characterstic_container > div > p {
+  display: flex;
+  margin-top: 5%;
+  margin-left: 30px;
+}
+
+.char_img {
+  width: 100px;
+  height: 100px;
+}
