@@ -9,21 +9,20 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-            {
-                path: 'register',
-                component: RegisterComponent,
-            },
-            {
-              path: '',
+          {
+              path: 'register',
+              component: RegisterComponent,
+          },
+          {
+            path: '',
+            component: InitComponent,
+          },
+          {
+              path: 'init',
               component: InitComponent,
-            },
-            {
-                path: 'init',
-                component: InitComponent,
-            }
-        ]
-    }
-
+          }
+      ]
+  }
 ]
 
 

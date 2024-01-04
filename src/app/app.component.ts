@@ -7,9 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'pixelChallenges';
-  constructor(private router: Router){}
+
+  constructor(private router: Router){ }
+
   public gotoinit(){
-    this.router.navigateByUrl('init');
+    this.router.navigateByUrl('auth/init');
   }
 }

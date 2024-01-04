@@ -12,7 +12,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: 'welcome',
+        path: '',
         component: WelcomeComponent
       },
       {
@@ -29,7 +29,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'pixelchallenge/welcome'
+        redirectTo: ''
       },
     ]
   }
