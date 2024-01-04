@@ -36,7 +36,7 @@ export class InitComponent implements OnInit{
   }
 
   public navigateToRegister(){
-    this.router.navigateByUrl('/register');
+    this.router.navigateByUrl('auth/register');
   }
 
   public navigateToInvitedMode() { }
@@ -47,7 +47,7 @@ export class InitComponent implements OnInit{
       this.authService.verifyUser(this.prepareRequest()).subscribe((resp) => {
         this.authService.showAuthSpinner(false);
         if(resp){
-          this.router.navigateByUrl('/pixelchallenge/welcome');
+          this.router.navigateByUrl('');
           this.generateSnackBar(false, literals.init_session_ok)
         }else{
           this.generateSnackBar(true, literals.login_sesion_ko)

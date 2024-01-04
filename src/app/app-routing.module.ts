@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-    { path: '', 
+    { path: 'auth', 
       loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
     },
     {
-      path: 'pixelchallenge',
+      path: '',
       loadChildren: () => import('./pixelChallenge/pixelChallenge.module').then(m => m.PagesModule)
     },
     { path: '404',

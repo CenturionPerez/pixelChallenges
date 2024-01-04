@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap'); */
-
-*{
+* {
   padding: 0;
   margin: 0;
   outline: none;
@@ -9,17 +7,19 @@
 
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-body{
+body {
   font-family:  'Poppins', sans-serif;
   background-color: black;
   background-image: url(../assets/pixelWallpaper.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-nav{
+nav {
   max-width: 1200px;
   margin: auto;
   padding: 2rem 1rem;
@@ -29,20 +29,20 @@ nav{
   gap: 2rem;
 }
 
-.nav-links{
+.nav-links {
   list-style: none;
   display: flex;
   align-items: center;
   gap: 3rem;
 }
 
-.link a{
+.link a {
   position: relative;
   padding-bottom: 0.75rem;
   color: #fff;
 }
 
-.link a::after{
+.link a::after {
   content: "";
   position: absolute;
   height: 2px;
@@ -53,7 +53,7 @@ nav{
 }
 
 .link a:hover::after{
-  width: 75%;
+  width: 100%;
 }
 
 .btn{
@@ -76,7 +76,7 @@ nav{
     height: 100%;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 100px auto 100px;
+    grid-template-rows: 100px auto 100px ;
 }
 
 img {
@@ -85,22 +85,38 @@ img {
     background-size: cover;
 }
 
+.hd {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #404657;
+}
+
+.hd > ul {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+.ft {
+  background-color: #19233f;
+}
 
 .hd, .ft {
-    background-color: rgb(0, 0, 0);
-    color: aliceblue;
+  color: aliceblue;
 }
+
 
 .hd > h1, .ft > p {
     padding: 10px;
 }
 
 .content {
-    position: relative;
+  position: relative;
 }
 
 .outlet{
-   position: relative;
+  position: relative;
 }
 
 
