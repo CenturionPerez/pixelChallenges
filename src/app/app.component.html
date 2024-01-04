@@ -1,29 +1,23 @@
-<body>
-  <main class="display">
-    <nav>
-      <div class="hd">
 
-        <ul class="nav-links">
-          <li class="link"><a href="#">Clasificación</a></li>
-          <li class="link"><a href="#">Perfil</a></li>
-          <li class="link"><a href="#">Modo un jugador</a></li>
-          <li class="link"><a href="#">Tienda</a></li>
-        </ul>
-
-
-      </div>
-
-      <button class="btn" (click)="gotoinit()">Iniciar Sesión</button>
-    </nav>
-
-
-
-    <div class="content">
-      <router-outlet></router-outlet>
+<main class="display">
+  <nav>
+    <div class="hd">
+      <ul class="nav-links">
+        <li class="link"><a href="#">Clasificación</a></li>
+        <li class="link"><a href="#">Perfil</a></li>
+        <li class="link"><a href="#">Modo un jugador</a></li>
+        <li class="link"><a href="#">Tienda</a></li>
+      </ul>
     </div>
+    <button class="btn" (click)="gotoinit()">Iniciar Sesión</button>
+  </nav>
 
-      <div class="ft">
-          <p>Quienes somos</p>
-      </div>
-  </main>
-</body>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="ft">
+      <p>Quienes somos</p>
+  </div>
+</main>
+

@@ -3,8 +3,7 @@
 }
 
 .d_header_w {
-  margin-left: 70%;
-  width: 400px;
+  margin-left: 55%;
 }
 
 .d_first_header_w {
@@ -24,7 +23,7 @@
 
 .characterstic_container > div {
   display: flex;
-  margin-left: 70%;
+  margin-left: 60%;
   margin-bottom: 20px;
 }
 
@@ -37,4 +36,18 @@
 .char_img {
   width: 100px;
   height: 100px;
+}
+
+@media screen and (max-width: 540px) {
+  .d_header_w {
+    margin-left: 0; /* Modifica según tus necesidades */
+  }
+
+  .d_first_header_w {
+    font-size: x-large;
+  }
+
+  .characterstic_container > div {
+    margin-left: 0; /* Modifica según tus necesidades */
+  }
 }
