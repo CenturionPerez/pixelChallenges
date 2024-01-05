@@ -1,21 +1,12 @@
-html, body {
-    margin: 0;
-    height: 100%;
-  }
-  
-  body {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-  }
+html {
+  height: 100%;
+  margin: 0;
+}
 
-  @media screen and (max-width: 530px) {
-    html {
-        width: 530px;
-        height: 1200px;
-    }
-  }
-
-  @media screen and (max-height: 709px) {
-    html {
-        height: 1000px;
-    }
-  }
+body {
+  min-height: 100vh;
+  background-image: url(./assets/pixelWallpaper.jpg);
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+}

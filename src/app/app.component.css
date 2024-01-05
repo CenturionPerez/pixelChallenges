@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
   padding: 0;
   margin: 0;
@@ -20,6 +21,8 @@
   background-repeat: no-repeat;
 }
 
+=======
+>>>>>>> origin/integration-apb
 a {
   text-decoration: none;
 }
@@ -63,13 +66,15 @@ nav {
 
 .btn{
   padding: 1rem 2rem;
-  font-size: 1rem;
   color: #fff;
   background-color: #1d4ed8;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
-
+  font-size: 1.5em;
+  font-weight: bold;
+  border: none;
+  box-sizing: border-box;
 }
 
 .btn:hover{
@@ -77,19 +82,29 @@ nav {
 
 }
 
+<<<<<<< HEAD
 
 img {
     width: 100%;
     height: 100%;
     background-size: cover;
 
+=======
+.display {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100px auto 100px ;
+  font-family: JetBrains Mono, monospace;
+>>>>>>> origin/integration-apb
 }
 
 .hd {
   width: 100%;
   height: 50px;
   border-radius: 10px;
-  background-color: #404657;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .hd > ul {
@@ -98,6 +113,12 @@ img {
   justify-content: center;
 }
 
+<<<<<<< HEAD
+=======
+.ft {
+}
+
+>>>>>>> origin/integration-apb
 .hd, .ft {
   color: aliceblue;
 }
@@ -108,12 +129,19 @@ img {
 }
 
 .content {
+<<<<<<< HEAD
   position: relative;
   max-height: 600px;
 }
 
 .outlet{
   position: relative;
+=======
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  width: 80%;
+>>>>>>> origin/integration-apb
 }
 
 .ft {
@@ -168,6 +196,7 @@ img {
 }
 
 
+<<<<<<< HEAD
  .ft .column > a {
   display: block;
   color: #ccc;
@@ -185,3 +214,6 @@ p.copyright{
   color: #fff;
   font-size: 0.8rem;
 }
+=======
+
+>>>>>>> origin/integration-apb
