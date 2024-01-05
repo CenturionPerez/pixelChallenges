@@ -1,53 +1,98 @@
 .welcome_container {
+  font-family: JetBrains Mono, monospace;
   color: rgb(251, 251, 251);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 40px;
+  max-width: 1050px;
+  margin: auto;
 }
 
-.d_header_w {
-  margin-left: 55%;
+.description_container {
+  display: flex;
+  flex-direction: column;
 }
 
-.d_first_header_w {
-  font-size: xx-large;
+.description_container > h5 {
+  font-size: 1.5em;
   font-weight: bold;
+  margin-bottom: 35px;
 }
 
-.d_sub_header_w {
-  font-size: large;
+.description_container > p {
+  margin-bottom: 20px;
 }
+
+.img_description_1 {
+  border-radius: 20px;
+}
+
+ h5 {
+  font-size: 1.5em;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
 
 .characterstic_container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 4fr;
 }
+
+
 
 .characterstic_container > div {
   display: flex;
-  margin-left: 60%;
   margin-bottom: 20px;
 }
 
 .characterstic_container > div > p {
   display: flex;
-  margin-top: 5%;
+  font-size: 1em;
   margin-left: 30px;
 }
+
 
 .char_img {
   width: 100px;
   height: 100px;
 }
 
-@media screen and (max-width: 540px) {
-  .d_header_w {
-    margin-left: 0; /* Modifica según tus necesidades */
-  }
+.description_mail {
+  color: #fff;
+  font-family: monospace;
+  font-size: large;
+  font-weight: bold;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 7s steps(60, end),
+    blink-caret .5s step-end infinite;
+}
 
-  .d_first_header_w {
-    font-size: x-large;
-  }
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 80% }
+}
 
-  .characterstic_container > div {
-    margin-left: 0; /* Modifica según tus necesidades */
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
+}
+
+.description_mail:hover {
+  cursor:pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .welcome_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 40px;
   }
 }

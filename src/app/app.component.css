@@ -1,12 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  outline: none;
-  border: none;
-  box-sizing: border-box;
-
-}
-
 a {
   text-decoration: none;
 }
@@ -50,13 +41,15 @@ nav {
 
 .btn{
   padding: 1rem 2rem;
-  font-size: 1rem;
   color: #fff;
   background-color: #1d4ed8;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
-
+  font-size: 1.5em;
+  font-weight: bold;
+  border: none;
+  box-sizing: border-box;
 }
 
 .btn:hover{
@@ -65,29 +58,19 @@ nav {
 }
 
 .display {
-    height: 100%;
-    min-width: 100vw;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 100px auto 100px ;
-    font-family:  'Poppins', sans-serif;
-    background-color: black;
-    background-image: url(../assets/pixelWallpaper.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-img {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100px auto 100px ;
+  font-family: JetBrains Mono, monospace;
 }
 
 .hd {
   width: 100%;
   height: 50px;
   border-radius: 10px;
-  background-color: #404657;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .hd > ul {
@@ -97,8 +80,6 @@ img {
 }
 
 .ft {
-  background-color: #19233f;
-  margin-bottom: 0px;
 }
 
 .hd, .ft {
@@ -111,12 +92,12 @@ img {
 }
 
 .content {
-  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  width: 80%;
 }
 
-.outlet{
-  position: relative;
-}
 
 
 
