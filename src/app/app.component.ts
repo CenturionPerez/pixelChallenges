@@ -15,4 +15,5 @@ export class AppComponent {
   public gotoinit(){
     this.router.navigateByUrl('auth/init');
   }
+
 }
