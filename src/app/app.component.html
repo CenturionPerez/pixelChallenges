@@ -1,9 +1,9 @@
 
 
 
-  <main class="display">
 
 
+<main class="display">
     <nav>
         <button mat-icon-button [matMenuTriggerFor]="menu" class="dropdown">
           <mat-icon>menu</mat-icon>
@@ -41,7 +41,8 @@
 
   <div class="content">
     <router-outlet></router-outlet>
-  </div>
+   </div>
+
 
 <footer>
 
@@ -55,9 +56,6 @@
       <a href=""><i class="ri-twitter-x-fill"></i></a>
     </div>
 
-    <p class="copyright">
-      copyright © 2023 PixelChallenge. All Rights Reserved
-    </p>
 
     <div class="column">
       <h4>Company</h4>
@@ -78,13 +76,19 @@
       <a href="#">Blogs</a>
       <a href="#">Channels</a>
     </div>
+
+    <p class="copyright">
+      copyright © 2023 PixelChallenge. All Rights Reserved
+    </p> <br>
+
+    <a href="#" (click)="gotohome()" class="back">
+      Back to top
+      <mat-icon>arrow_upward</mat-icon>
+
+    </a>
   </div>
 
-  <!-- <a href="#" (click)="gotohome()" class="back">
-    Back to top
-    <mat-icon>arrow_upward</mat-icon>
 
-  </a> -->
 
   </footer>
 

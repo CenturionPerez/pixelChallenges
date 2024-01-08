@@ -2,13 +2,6 @@ a {
   text-decoration: none;
 }
 
-body {
-
-  margin: 20px;
-
-}
-
-
 nav {
   max-width: 1800px;
   margin: auto;
@@ -180,17 +173,17 @@ footer{
 }
 
 p.copyright{
-  padding: 1rem;
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
+
 }
 
 
 a.back{
-  display: block;
   color: #ccc;
-  margin-bottom: 1rem;
-  transition: all 0.3s ease;
+  position: relative;
+  bottom: 0;
+  margin-top: 120px;
 }
 
 a.back:hover{
