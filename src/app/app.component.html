@@ -1,61 +1,92 @@
 
-<main class="display">
-  <nav>
-    <div class="hd">
-      <ul class="nav-links">
-        <li class="link"><a href="#">Clasificación</a></li>
-        <li class="link"><a href="#">Perfil</a></li>
-        <li class="link"><a href="#">Modo un jugador</a></li>
-        <li class="link"><a href="#">Tienda</a></li>
-      </ul>
-    </div>
-    <button class="btn" (click)="gotoinit()">Iniciar Sesión</button>
-  </nav>
+
+
+  <main class="display">
+
+
+    <nav>
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="dropdown">
+          <mat-icon>menu</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+
+            <button mat-menu-item>
+              <mat-icon>person</mat-icon>
+              <span>Un jugador</span>
+            </button>
+
+            <button  mat-menu-item>
+              <mat-icon>diversity_3</mat-icon>
+              <span>Jugar en línea</span>
+            </button>
+
+
+        </mat-menu>
+
+
+      <div class="hd">
+        <ul class="nav-links">
+          <li class="link" (click)="gotohome()"><a href="#">Inicio</a></li>
+          <li class="link"><a href="#">Clasificación</a></li>
+          <li class="link"><a href="#">Perfil</a></li>
+          <li class="link"><a href="#">Tienda</a></li>
+        </ul>
+      </div>
+      <button class="btn" (click)="gotoinit()">Iniciar Sesión</button>
+    </nav>
+
+
+
 
   <div class="content">
     <router-outlet></router-outlet>
   </div>
 
-    <div class="ft">
+<footer>
 
-
-      <div class="socials">
-        <a href=""><i class="ri-youtube-fill"></i></a>
-        <a href=""><i class="ri-instagram-fill"></i></a>
-        <a href=""><i class="ri-twitter-x-fill"></i></a>
-      </div>
-
-      <div class="column">
-        <h4>Company</h4>
-        <a href="#">Busines</a>
-        <a href="#">Network</a>
-      </div>
-
-      <div class="column">
-        <h4>About Us</h4>
-        <a href="#">Blogs</a>
-        <a href="#">Channels</a>
-        <a href="#">hola</a>
-        <a href="#">adios</a>
-      </div>
-
-      <div class="column">
-        <h4>About Us</h4>
-        <a href="#">Blogs</a>
-        <a href="#">Channels</a>
-        <a href="#">hola</a>
-        <a href="#">adios</a>
-      </div>
-
-      <p class="copyright">
-        copyright © 2023 PixelChallenge. All Rights Reserved
-      </p>
+  <div class="ft">
 
 
 
+    <div class="socials">
+      <a href=""><i class="ri-youtube-fill"></i></a>
+      <a href=""><i class="ri-instagram-fill"></i></a>
+      <a href=""><i class="ri-twitter-x-fill"></i></a>
     </div>
 
+    <p class="copyright">
+      copyright © 2023 PixelChallenge. All Rights Reserved
+    </p>
+
+    <div class="column">
+      <h4>Company</h4>
+      <a href="#">Busines</a>
+      <a href="#">Network</a>
+    </div>
+
+    <div class="column">
+      <h4>About Us</h4>
+      <a href="#">Blogs</a>
+      <a href="#">Channels</a>
+      <a href="#">Channels</a>
+      <a href="#">Channels</a>
+    </div>
+
+    <div class="column">
+      <h4>About Us</h4>
+      <a href="#">Blogs</a>
+      <a href="#">Channels</a>
+    </div>
+  </div>
+
+  <!-- <a href="#" (click)="gotohome()" class="back">
+    Back to top
+    <mat-icon>arrow_upward</mat-icon>
+
+  </a> -->
+
+  </footer>
 
 
 </main>
-

@@ -16,4 +16,8 @@ export class AppComponent {
     this.router.navigateByUrl('auth/init');
   }
 
+  public gotohome() {
+    this.router.navigateByUrl('');
+  }
+
 }
