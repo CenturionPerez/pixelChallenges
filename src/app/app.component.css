@@ -165,7 +165,7 @@ footer{
   display: block;
   color: #ccc;
   margin-bottom: 1rem;
-  transition: all 0.3s ease;
+  transition: all 0.8s ease;
 }
 
 .ft .column > a:hover {
