@@ -1,4 +1,4 @@
 <div class="p-layaout-container">
     <router-outlet></router-outlet>
-</div>
-
+    <mat-spinner class="spinner" [ngStyle]="{ 'visibility': (spinner$ | async) ? 'visible': 'hidden' }"></mat-spinner>
+ </div>

@@ -1,6 +1,6 @@
 
 
-<div class="classification">
+<div class="classification" [ngStyle]=" { 'visibility': showTable? 'visible': 'hidden' }">
     <mat-form-field class="filter_classification">
         <mat-label>Filtrar</mat-label>
         <input matInput (keyup)="filter($event)" placeholder="Buscar" #input>
