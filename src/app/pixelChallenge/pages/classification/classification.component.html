@@ -1,13 +1,15 @@
 
 
+
 <div class="classification" [ngStyle]=" { 'visibility': showTable? 'visible': 'hidden' }">
+    <h2 style="font-size: 1.5em; font-weight: bold; color: white;">Clasificación</h2>
+
     <mat-form-field class="filter_classification">
         <mat-label>Filtrar</mat-label>
         <input matInput (keyup)="filter($event)" placeholder="Buscar" #input>
     </mat-form-field>
     
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 data-table">
-    
         <ng-container matColumnDef="Ranking">
           <th mat-header-cell *matHeaderCellDef> Ranking </th>
           <td mat-cell *matCellDef="let element"> {{element.rank}} </td>
