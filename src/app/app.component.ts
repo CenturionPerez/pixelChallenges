@@ -20,4 +20,15 @@ export class AppComponent {
     this.router.navigateByUrl('');
   }
 
+  public navigateToGame(){
+    this.router.navigateByUrl('game');
+  }
+
+  public goToPerfil(){
+    this.router.navigateByUrl('profile');
+  }
+
+  public goToClasification() {
+    this.router.navigateByUrl('classification');
+  }
 }

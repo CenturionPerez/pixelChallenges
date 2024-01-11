@@ -191,3 +191,7 @@ a.back:hover{
 }
 
 
+
+.profileBtn {
+  background: linear-gradient(to bottom, #3e3e3e, #535252);
+}

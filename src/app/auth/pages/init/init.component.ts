@@ -13,8 +13,8 @@ import { Literals } from 'src/app/utils/interfaces/util.interface';
   styleUrls: ['./init.component.css']
 })
 
-export class InitComponent implements OnInit{ 
-  
+export class InitComponent implements OnInit{
+
   public literals: Literals = literals;
   public initForm: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -27,8 +27,8 @@ export class InitComponent implements OnInit{
   });
 
   constructor(
-    private router: Router, 
-    private authService: AuthService, 
+    private router: Router,
+    private authService: AuthService,
     private _snackbar: MatSnackBar){}
 
   ngOnInit(): void {
@@ -39,7 +39,10 @@ export class InitComponent implements OnInit{
     this.router.navigateByUrl('auth/register');
   }
 
-  public navigateToInvitedMode() { }
+  public navigateToInvitedMode() {
+    this.router.navigateByUrl('playAsInvited');
+
+   }
 
   public access(): void {
     if(this.initForm.valid){
