@@ -5,38 +5,80 @@
 
 <main class="display">
     <nav>
+
+<!-- Botón para el menu desplegable -->
+
         <button mat-icon-button [matMenuTriggerFor]="menu" class="dropdown">
           <mat-icon>menu</mat-icon>
         </button>
 
+<!-- Desplegable que sale cuando pulsas al botón -->
         <mat-menu #menu="matMenu">
 
-            <button mat-menu-item>
+            <button mat-menu-item (click)="navigateToGame()">
               <mat-icon>person</mat-icon>
               <span>Un jugador</span>
             </button>
 
-            <button  mat-menu-item>
+            <button  mat-menu-item (click)="navigateToGame()">
               <mat-icon>diversity_3</mat-icon>
               <span>Jugar en línea</span>
             </button>
-
-
         </mat-menu>
 
+<!-- Parte de navegación, links de la cabecera, con menus o links directos a otros componentes -->
 
       <div class="hd">
         <ul class="nav-links">
-          <li class="link" (click)="gotohome()"><a href="#">Inicio</a></li>
-          <li class="link"><a href="#">Clasificación</a></li>
-          <li class="link"><a href="#">Perfil</a></li>
-          <li class="link"><a href="#">Tienda</a></li>
+          <li class="link" (click)="gotohome()"><a href="#">
+            <mat-icon>home_pin</mat-icon>
+            Inicio
+          </a></li>
+
+
+          <li class="link"><a (click)="goToClasification()">
+            <mat-icon>leaderboard</mat-icon>
+            Clasificación
+          </a></li>
+
+
+
+<!-- parte del perfil la cual tiene un menú con dos opciones           -->
+
+
+          <li class="link"><a [mat-menu-trigger-for]="menuPerfil">
+            <mat-icon>account_circle</mat-icon>
+            Perfil
+          </a></li>
+
+          <mat-menu #menuPerfil=""matMenu>
+
+            <button mat-menu-item (click)="goToPerfil()" class="profileBtn">
+              <mat-icon>manage_accounts</mat-icon>
+              <span>Ver mi perfil</span>
+            </button>
+
+            <button mat-menu-item (click)="navigateToGame()" class="profileBtn">
+              <mat-icon>history</mat-icon>
+              <span>Historial de compras</span>
+            </button>
+
+          </mat-menu>
+
+
+          <li class="link"><a (click)="navigateToGame()">
+            <mat-icon>storefront</mat-icon>
+            Tienda
+          </a></li>
+
         </ul>
       </div>
+
+
       <button class="btn" (click)="gotoinit()">Iniciar Sesión</button>
+
+
     </nav>
-
-
 
 
   <div class="content">
@@ -46,16 +88,19 @@
 
 <footer>
 
+
+
   <div class="ft">
 
-
-
+<!-- Iconos para las redes sociales -->
     <div class="socials">
-      <a href=""><i class="ri-youtube-fill"></i></a>
-      <a href=""><i class="ri-instagram-fill"></i></a>
-      <a href=""><i class="ri-twitter-x-fill"></i></a>
+      <a href="https://www.youtube.com/" target="_blank"><i class="ri-youtube-fill"></i></a>
+      <a href="https://www.instagram.com/" target="_blank"><i class="ri-instagram-fill"></i></a>
+      <a href="https://www.facebook.com/" target="_blank"><i class="ri-twitter-x-fill"></i></a>
     </div>
 
+
+<!-- Paginas de contacto, links rapidos y copyright -->
 
     <div class="column">
       <h4>Company</h4>
@@ -64,17 +109,17 @@
     </div>
 
     <div class="column">
-      <h4>About Us</h4>
-      <a href="#">Blogs</a>
-      <a href="#">Channels</a>
-      <a href="#">Channels</a>
-      <a href="#">Channels</a>
+      <h4>Custome Service</h4>
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+      <a href="#">Partner Program</a>
     </div>
 
     <div class="column">
-      <h4>About Us</h4>
-      <a href="#">Blogs</a>
-      <a href="#">Channels</a>
+      <h4>Quick Links</h4>
+      <a (click)="navigateToGame()">Game</a>
+      <a (click)="goToPerfil()">Profile</a>
+      <a (click)="gotohome()">Inicio</a>
     </div>
 
     <p class="copyright">
