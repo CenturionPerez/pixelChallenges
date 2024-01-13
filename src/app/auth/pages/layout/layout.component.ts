@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'layout',
@@ -8,13 +9,14 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LayoutComponent implements OnInit { 
 
-  public spinner: boolean = false;
+  public spinner$: Observable<boolean> = of(false);
 
-  constructor( private authService: AuthService ){ }
+  constructor( private authService: AuthService, public cdr: ChangeDetectorRef ){ }
 
   ngOnInit(): void {
     this.authService.showAuthSpinner$.subscribe((resp) => {
-      this.spinner = resp;
+      this.spinner$ = of(resp);
+      this.cdr.detectChanges();
     });
   }
 }

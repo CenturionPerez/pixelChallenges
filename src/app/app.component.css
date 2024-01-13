@@ -65,15 +65,15 @@ nav {
 
 .display {
   height: 100vh;
-  display: contents;
+  min-width: 1000px;
+  display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 100px auto 100px ;
+  grid-template-rows: 200px auto 250px;
   font-family: JetBrains Mono, monospace;
 }
 
 .hd {
   width: 100%;
-  height: 50px;
   border-radius: 10px;
   font-size: 1.5em;
   font-weight: bold;
@@ -99,22 +99,14 @@ nav {
   max-height: 5000px;
 }
 
-.outlet{
-  position: relative;
-}
-
-footer{
-  max-width: 100%;
-  max-height: 100%;
-}
-
 .ft {
   position: relative;
   display: flex;
-  grid-template-columns:  400px repeat(3, 1fr);
-  background: linear-gradient(to bottom, rgba(68, 67, 67, 0.7), rgb(4, 4, 4, 0.7));
+  background: #424242;
   border-top: 1px solid #ccc;
   align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .ft .column{
@@ -127,6 +119,10 @@ footer{
 .ft p{
   color: #ccc;
   margin-bottom: 2rem;
+}
+
+.socials {
+  margin-left: 100px;
 }
 
 .ft .socials{
@@ -146,7 +142,7 @@ footer{
   border-radius: 100%;
   transition: all 0.3s ease;
   max-block-size: 100px;
-
+  margin-top: 4px;
 }
 
 .ft .socials a:hover{

@@ -1,3 +1,16 @@
-h2 {
-  color: #fff;
+.classification {
+  display: grid;
+  place-items: center; 
 }
+
+.mdc-data-table__table {
+  min-width: 80% !important;
+}
+
+th[role='columnheader'] {
+  font-weight: bold;
+  font-size: x-large;
+  font-family: JetBrains Mono, monospace;
+}
+
+

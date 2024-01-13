@@ -9,12 +9,12 @@ import { ClientAuthentication, ClientRegister } from '../interfaces/auth.interfa
 })
 export class AuthService {
 
-  private urlApi: string = 'http://localhost:5000/';
+  private urlApi: string = 'http://localhost:5000/v1/';
 
   constructor(private http: HttpClient) { }
 
   private showAuthSpinnerSubject = new BehaviorSubject<boolean>(false);
-  showAuthSpinner$ = this.showAuthSpinnerSubject.asObservable();
+  public showAuthSpinner$ = this.showAuthSpinnerSubject.asObservable();
 
   showAuthSpinner(value: boolean) {
     this.showAuthSpinnerSubject.next(value);

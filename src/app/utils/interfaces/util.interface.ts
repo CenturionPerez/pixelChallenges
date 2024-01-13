@@ -1,7 +1,7 @@
 
 interface RequestService {
     apiUrl: string,
-    data: any
+    data?: any
 }
 
 interface ResponseService {
