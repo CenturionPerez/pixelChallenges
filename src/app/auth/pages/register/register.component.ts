@@ -56,12 +56,7 @@ export class RegisterComponent {
       }
     }
 
-    private generateSnackBar(error: boolean, message: string): void {
-      this._snackbar.open(message, literals.accept, {
-        duration: 10000,
-        panelClass: error? ['snackbarKo']: ['snackbarOk']
-      });
-    }
+
 
     public register(): void {
       if(this.registerForm.valid){
@@ -70,13 +65,15 @@ export class RegisterComponent {
           this.authService.showAuthSpinner(false);
           if(resp){
             this.router.navigateByUrl('');
-            this.generateSnackBar(false, literals.register_session_ok)
+            this.authService.setUserLoggedInSessionStorage(true);
+            this.authService.generateSnackBar(false, literals.register_session_ok)
           }else{
-            this.generateSnackBar(true, literals.login_sesion_ko)
+            this.authService.setUserLoggedInSessionStorage(false);
+            this.authService.generateSnackBar(true, literals.login_sesion_ko)
           }
         });
       }else{
-        this.generateSnackBar(true, literals.error_form)
+        this.authService.generateSnackBar(true, literals.error_form)
       }
     }
 

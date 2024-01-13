@@ -191,7 +191,6 @@ p.copyright{
 
 }
 
-
 a.back{
   color: #ccc;
   position: relative;
@@ -203,8 +202,10 @@ a.back:hover{
   color: #1d4ed8;
 }
 
-
-
 .profileBtn {
   background: linear-gradient(to bottom, #3e3e3e, #535252);
+}
+
+::ng-deep mat-snack-bar-container.snackbarKo > div {
+  background-color: #fd4134 !important;
 }

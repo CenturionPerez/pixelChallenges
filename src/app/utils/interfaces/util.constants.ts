@@ -10,5 +10,6 @@ export const literals: Literals = {
     error_msisdn: 'Por favor, introduce un teléfono correcto',
     init_session_ok: 'Inicio de sesión completado',
     register_session_ok: 'Registro completado',
-    login_sesion_ko: 'Ha ocurrido un error, vuelve a intentarlo'
+    login_sesion_ko: 'Ha ocurrido un error, vuelve a intentarlo',
+    loggout_session_ok: 'Has cerrado sesión con éxito'
 } 
