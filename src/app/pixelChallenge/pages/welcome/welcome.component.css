@@ -25,6 +25,7 @@
 
 .img_description_1 {
   border-radius: 20px;
+  width: 100%;
 }
 
  h5 {
@@ -52,6 +53,14 @@
   margin-left: 30px;
 }
 
+.content_welcome {
+  background: #1d4ed8;
+  border-radius: 25px;
+  margin-top: 10px;
+  border-color: white;
+  border: 2px solid white;
+  text-align: center;
+}
 
 .char_img {
   width: 100px;
@@ -63,6 +72,7 @@
   font-family: monospace;
   font-size: large;
   font-weight: bold;
+  padding-top: 20px;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: .15em solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
@@ -76,7 +86,7 @@
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }
-  to { width: 80% }
+  to { width: 70% }
 }
 
 /* The typewriter cursor effect */

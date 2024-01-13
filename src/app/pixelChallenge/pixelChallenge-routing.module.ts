@@ -5,6 +5,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { ClassificationComponent } from './pages/classification/classification.component';
 import { GameComponent } from './pages/game/game.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { AuthGuard } from '../auth/pages/auth.guard';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
       },
       {
         path: 'classification',
-        component: ClassificationComponent
+        component: ClassificationComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'game',
@@ -30,7 +32,8 @@ const routes: Routes = [
       },
       {
         path: 'profile',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: '**',

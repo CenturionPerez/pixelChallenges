@@ -23,6 +23,7 @@ nav {
   position: relative;
   padding-bottom: 0.75rem;
   color: #fff;
+  cursor: pointer;
 }
 
 .link a::after {
@@ -39,11 +40,15 @@ nav {
   width: 100%;
 }
 
-.btn{
+.no_logged {
+  cursor: not-allowed !important;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.btn {
   padding: 1rem 2rem;
   color: #fff;
-  background-color: #1d4ed8;
-  border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 1.5em;
@@ -52,15 +57,27 @@ nav {
   box-sizing: border-box;
 }
 
+.btn-init{
+  border-radius: 5px;
+  background-color: #1d4ed8;
+}
+
+.btn-logout{
+  background-color: #d81d8d;
+  border-radius: 25px;
+}
+
 .dropdown{
   color: #fff;
   background-color: #1d4ed8;
 }
 
-
-.btn:hover{
+.btn-init:hover{
   background-color: #1e40af;
+}
 
+.btn-logout:hover{
+  background-color: #f21b9c;
 }
 
 .display {
