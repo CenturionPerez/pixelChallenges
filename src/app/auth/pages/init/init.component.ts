@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -13,7 +13,7 @@ import { Literals } from 'src/app/utils/interfaces/util.interface';
   styleUrls: ['./init.component.css']
 })
 
-export class InitComponent implements OnInit{
+export class InitComponent {
 
   public literals: Literals = literals;
   public initForm: FormGroup = new FormGroup({
@@ -31,17 +31,12 @@ export class InitComponent implements OnInit{
     private authService: AuthService,
     private _snackbar: MatSnackBar){}
 
-  ngOnInit(): void {
-
-  }
-
   public navigateToRegister(){
     this.router.navigateByUrl('auth/register');
   }
 
   public navigateToInvitedMode() {
     this.router.navigateByUrl('playAsInvited');
-
    }
 
   public access(): void {

@@ -1,30 +1,28 @@
-
-
-
-
-
 <main class="display">
     <nav>
-
 <!-- Botón para el menu desplegable -->
-
-        <button mat-icon-button [matMenuTriggerFor]="menu" class="dropdown">
-          <mat-icon>menu</mat-icon>
-        </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="dropdown">
+        <mat-icon>menu</mat-icon>
+      </button>
 
 <!-- Desplegable que sale cuando pulsas al botón -->
-        <mat-menu #menu="matMenu">
+      <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="navigateToGame()">
+            <mat-icon>person</mat-icon>
+            <span>Modo invitado</span>
+          </button>
 
-            <button mat-menu-item (click)="navigateToGame()">
-              <mat-icon>person</mat-icon>
-              <span>Un jugador</span>
-            </button>
+          
+          <button mat-menu-item (click)="navigateToGame()" [ngClass]="{ no_logged: !logged }">
+            <mat-icon>person</mat-icon>
+            <span>Un jugador</span>
+          </button>
 
-            <button  mat-menu-item (click)="navigateToGame()">
-              <mat-icon>diversity_3</mat-icon>
-              <span>Jugar en línea</span>
-            </button>
-        </mat-menu>
+          <button  mat-menu-item (click)="navigateToGame()" [ngClass]="{ no_logged: !logged }">
+            <mat-icon>diversity_3</mat-icon>
+            <span>Jugar en línea</span>
+          </button>
+      </mat-menu>
 
 <!-- Parte de navegación, links de la cabecera, con menus o links directos a otros componentes -->
 
@@ -36,17 +34,13 @@
           </a></li>
 
 
-          <li class="link"><a (click)="goToClasification()">
+          <li class="link"><a (click)="goToClasification()" [ngClass]="{ no_logged: !logged }">
             <mat-icon>leaderboard</mat-icon>
             Clasificación
           </a></li>
 
-
-
-<!-- parte del perfil la cual tiene un menú con dos opciones           -->
-
-
-          <li class="link"><a [mat-menu-trigger-for]="menuPerfil">
+<!-- parte del perfil la cual tiene un menú con dos opciones -->
+          <li class="link"><a [mat-menu-trigger-for]="menuPerfil" [ngClass]="{ no_logged: !logged }">
             <mat-icon>account_circle</mat-icon>
             Perfil
           </a></li>
@@ -65,26 +59,26 @@
 
           </mat-menu>
 
-
-          <li class="link"><a (click)="navigateToGame()">
+          <li class="link"><a (click)="navigateToGame()" [ngClass]="{ no_logged: !logged }">
             <mat-icon>storefront</mat-icon>
             Tienda
           </a></li>
-
         </ul>
       </div>
 
+      <ng-container *ngIf="logged; else noLogged">
+        <button class="btn btn-logout" (click)="updateLoggedUser()">Cerrar Sesión</button>
+      </ng-container>
 
-      <button class="btn" (click)="gotoinit()">Iniciar Sesión</button>
-
-
+      <ng-template #noLogged>
+        <button class="btn btn-init" (click)="gotoinit()">Iniciar Sesión</button>
+      </ng-template>
+  
     </nav>
-
 
   <div class="content">
     <router-outlet></router-outlet>
    </div>
-
 
 <footer>
   <div class="ft">

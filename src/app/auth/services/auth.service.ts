@@ -16,8 +16,25 @@ export class AuthService {
   private showAuthSpinnerSubject = new BehaviorSubject<boolean>(false);
   public showAuthSpinner$ = this.showAuthSpinnerSubject.asObservable();
 
+  private userLoggedSubject = new BehaviorSubject<boolean>(false);
+  private readonly sessionKey = 'userLogged';
+  public userLogged$ = this.userLoggedSubject.asObservable();
+
+
   showAuthSpinner(value: boolean) {
+    console.log('showAuthSpinner$ updated:', value);
     this.showAuthSpinnerSubject.next(value);
+  }
+
+  setUserLoggedInSessionStorage(value: boolean) {
+    console.log('userLogged:', value);
+    this.userLoggedSubject.next(value);
+    sessionStorage.setItem(this.sessionKey, JSON.stringify(value));
+  }
+
+  getUserLoggedFromSessionStorage(): boolean {
+    const storedValue = sessionStorage.getItem(this.sessionKey);
+    return storedValue ? JSON.parse(storedValue) : false;
   }
 
   public verifyUser(data : ClientAuthentication): Observable<boolean> {
@@ -32,10 +49,12 @@ export class AuthService {
     console.log(data);
     return this.http.post<ResponseService>(this.urlApi + apiUrl, data).pipe(
       map((resp) => {
+        this.setUserLoggedInSessionStorage(true);
         return resp.data as boolean;
       }),
       catchError((error) => {
         console.error(error);
+        this.setUserLoggedInSessionStorage(false);
         return of(false);
       })
     ).pipe(delay(2000))
