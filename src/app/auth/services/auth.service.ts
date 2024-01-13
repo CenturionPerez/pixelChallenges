@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, delay, map, of } from 'rxjs';
 import { RequestService, ResponseService } from '../../utils/interfaces/util.interface';
 import { ClientAuthentication, ClientRegister } from '../interfaces/auth.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { literals } from 'src/app/utils/interfaces/util.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class AuthService {
 
   private urlApi: string = 'http://localhost:5000/v1/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _snackbar: MatSnackBar) { }
 
   private showAuthSpinnerSubject = new BehaviorSubject<boolean>(false);
   public showAuthSpinner$ = this.showAuthSpinnerSubject.asObservable();
@@ -37,6 +39,13 @@ export class AuthService {
     return storedValue ? JSON.parse(storedValue) : false;
   }
 
+  generateSnackBar(error: boolean, message: string): void {
+    this._snackbar.open(message, literals.accept, {
+      duration: 10000,
+      panelClass: error? ['snackbarKo']: ['snackbarOk']
+    });
+  }
+
   public verifyUser(data : ClientAuthentication): Observable<boolean> {
     return this.initCall({apiUrl: 'verifyUser', data});
   }
@@ -49,7 +58,6 @@ export class AuthService {
     console.log(data);
     return this.http.post<ResponseService>(this.urlApi + apiUrl, data).pipe(
       map((resp) => {
-        this.setUserLoggedInSessionStorage(true);
         return resp.data as boolean;
       }),
       catchError((error) => {

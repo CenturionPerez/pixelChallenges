@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription, of } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AuthService } from './auth/services/auth.service';
+import { literals } from './utils/interfaces/util.constants';
 
 @Component({
   selector: 'app-root',
@@ -52,5 +53,6 @@ export class AppComponent implements OnInit, OnDestroy {
   public updateLoggedUser(): void {
     this.authService.setUserLoggedInSessionStorage(false);
     this.gotohome();
+    this.authService.generateSnackBar(true, literals.loggout_session_ok);
   }
 }

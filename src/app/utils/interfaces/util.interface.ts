@@ -19,7 +19,8 @@ interface Literals {
     error_msisdn: string
     init_session_ok: string,
     register_session_ok: string,
-    login_sesion_ko: string
+    login_sesion_ko: string,
+    loggout_session_ok: string
 }
 
 export { RequestService, ResponseService, Literals }
