@@ -1,0 +1,65 @@
+<div class="profilemodify">
+
+  <div class="mostrarDatos">
+
+    <h2>Pefil de Usuario</h2>
+    <p><strong>Nombre:</strong> {{ datosRegistro?.name }}</p>
+    <p><strong>Email: </strong> {{ datosRegistro?.email }}</p>
+    <p><strong>Teléfono: </strong> {{datosRegistro?.msisdn}}</p>
+
+    <button mat-raised-button (click)="borrarDatos()">
+      Borrar Datos de usuario. (FUNCION TEMPORAL PARA BORRAR EL FICHERO)
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
+
+
+
+
+  <div class="form">
+    <mat-card class="formCard" style="background-color: white;">
+
+      <mat-card-header>
+        <mat-card-title class="clard tittle">Modificar tu perfil</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content class="card-m">
+
+        <mat-form-field [formGroup]="updateProfileForm" >
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="username">
+          <mat-error>{{literals.error_email}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field [formGroup]="updateProfileForm">
+          <mat-label>Telefono</mat-label>
+          <input matInput formControlName="msisdn">
+          <mat-error>{{literals.error_msisdn}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field [formGroup]="updateProfileForm">
+          <mat-label>Contraseña antigua</mat-label>
+          <input matInput formControlName="password">
+          <mat-error>{{literals.error_password}}</mat-error>
+        </mat-form-field>
+
+        <!-- <mat-form-field [formGroup]="updateProfileForm">
+          <mat-label>Contraseña nueva</mat-label>
+          <input matInput formControlName="password">
+          <mat-error>{{literals.error_password}}</mat-error>
+        </mat-form-field> -->
+
+        <button type="submit" mat-raised-button (click)="update()">
+          Actualizar perfil
+          <mat-icon>upgrade</mat-icon>
+        </button>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+
+
+</div>
