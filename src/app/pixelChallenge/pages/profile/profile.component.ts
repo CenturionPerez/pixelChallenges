@@ -45,17 +45,7 @@ export class ProfileComponent implements OnInit {
     private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.pixelChallengeService.getUser('example').subscribe((resp) => {
-      // this.user = resp
-      this.user = {
-        email: 'Prueba@gmail.commm',
-        img: 'example',
-        name: 'Prueba Gmail',
-        password: 'defergt54tt'
-      }
-      this.pixelChallengeService.showPixelChallengeSpinner(false);
-      this.showProfile = true;
-    })
+    this.getUser();
   }
 
   public showInputPass(): void {
@@ -70,12 +60,27 @@ export class ProfileComponent implements OnInit {
     this.pixelChallengeService.modifyUser(this.requestModifyData()).subscribe((resp) => {
       if(resp){
         this.authService.generateSnackBar(false, literals.modify_user_ok);
-        this.router.navigateByUrl('profile');
+        this.getUser();
       }else{
         this.authService.generateSnackBar(true, literals.modify_user_ko);
       }
     });
-  }
+  };
+
+  private getUser(): void {
+    this.showProfile = false;
+    this.pixelChallengeService.getUser('example').subscribe((resp) => {
+      // this.user = resp
+      this.user = {
+        email: 'Prueba@gmail.commm',
+        img: 'example',
+        name: 'Prueba Gmail',
+        password: 'defergt54tt'
+      }
+      this.pixelChallengeService.showPixelChallengeSpinner(false);
+      this.showProfile = true;
+    });
+  };
 
   private requestModifyData(): User {
     return {
@@ -83,6 +88,6 @@ export class ProfileComponent implements OnInit {
       img: this.updateUserForm.get('img')?.value,
       name: this.updateUserForm.get('username')?.value,
       password: this.updateUserForm.get('password')?.value
-    }
-  }
+    };
+  };
 }
