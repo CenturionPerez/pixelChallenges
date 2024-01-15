@@ -1,3 +1,75 @@
-:host {
+.profilemodify {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.datosUsuario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.buttonChange {
+  justify-content: center;
+  text-align: center;
+  display: flex;
+}
+
+.buttonChange .pssCancel {
+  align-items: center;
+}
+
+
+.datosUsuario h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.datosUsuario a {
   display: block;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.img {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 200px;
+
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.pssChange,
+.pssCancel,
+.confirmChange,
+.updateProfile {
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.confirmChange {
+  display: flex;
+  justify-content: center;
+}
+
+.updateProfile {
+  text-align: center;
+  justify-content: center;
+}
+
+
+.passDiv {
+  display: block;
+  text-align: center;
 }

@@ -2,64 +2,60 @@
 
   <div class="mostrarDatos">
 
-    <h2>Pefil de Usuario</h2>
-    <p><strong>Nombre:</strong> {{ datosRegistro?.name }}</p>
-    <p><strong>Email: </strong> {{ datosRegistro?.email }}</p>
-    <p><strong>Teléfono: </strong> {{datosRegistro?.msisdn}}</p>
+    <div class="datosUsuario">
 
-    <button mat-raised-button (click)="borrarDatos()">
-      Borrar Datos de usuario. (FUNCION TEMPORAL PARA BORRAR EL FICHERO)
-      <mat-icon>delete</mat-icon>
+      <h2>Pefil de Usuario</h2>
+
+      <div class="img">
+        <img src="./../../../assets/defectimg.jpg" alt="Foto de perfil" (click)="changeImage()">
+      </div>
+
+
+      <a><strong>Nombre:</strong></a>     <!-- codigo para mostrar el nombre -->
+      <a><strong>Email: </strong></a>     <!-- codigo para mostrar el nombre -->
+      <a><strong>Teléfono: </strong></a>  <!-- codigo para mostrar el nombre -->
+
+    </div>
+
+    <div class="buttonChange">
+
+      <button mat-raised-button color="accent" class="pssChange" (click)="showInputPass()" *ngIf="!showInputs">
+        Pulse para cambiar contraseña
+      </button>
+
+      <button mat-raised-button color="primary" class="pssCancel" (click)="showInputPass()" *ngIf="showInputs">
+        Pulse para cancelar el cambio
+      </button>
+
+    </div>
+
+
+    <div *ngIf="showInputs" class="passDiv">
+      <mat-form-field>
+        <input matInput type="password" placeholder="Contraseña antigua">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="password" placeholder="Nueva contraseña">
+      </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput type="password" placeholder="Confirmar nueva contraseña">
+    </mat-form-field>
+
+    <button mat-raised-button (click)="confirmarCambio()" class="confirmChange">
+      Confirmar Cambio
     </button>
+
+    </div>
+
   </div>
 
 
-
-
-
-  <div class="form">
-    <mat-card class="formCard" style="background-color: white;">
-
-      <mat-card-header>
-        <mat-card-title class="clard tittle">Modificar tu perfil</mat-card-title>
-      </mat-card-header>
-
-      <mat-card-content class="card-m">
-
-        <mat-form-field [formGroup]="updateProfileForm" >
-          <mat-label>Nombre</mat-label>
-          <input matInput formControlName="username">
-          <mat-error>{{literals.error_email}}</mat-error>
-        </mat-form-field>
-
-        <mat-form-field [formGroup]="updateProfileForm">
-          <mat-label>Telefono</mat-label>
-          <input matInput formControlName="msisdn">
-          <mat-error>{{literals.error_msisdn}}</mat-error>
-        </mat-form-field>
-
-        <mat-form-field [formGroup]="updateProfileForm">
-          <mat-label>Contraseña antigua</mat-label>
-          <input matInput formControlName="password">
-          <mat-error>{{literals.error_password}}</mat-error>
-        </mat-form-field>
-
-        <!-- <mat-form-field [formGroup]="updateProfileForm">
-          <mat-label>Contraseña nueva</mat-label>
-          <input matInput formControlName="password">
-          <mat-error>{{literals.error_password}}</mat-error>
-        </mat-form-field> -->
-
-        <button type="submit" mat-raised-button (click)="update()">
-          Actualizar perfil
-          <mat-icon>upgrade</mat-icon>
-        </button>
-
-      </mat-card-content>
-    </mat-card>
-  </div>
-
-
-
+  <button type="submit" mat-raised-button (click)="update()" class="updateProfile">
+    Actualizar perfil
+    <mat-icon>upgrade</mat-icon>
+  </button>
 
 </div>
