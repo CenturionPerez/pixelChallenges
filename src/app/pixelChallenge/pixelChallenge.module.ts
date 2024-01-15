@@ -7,18 +7,22 @@ import { PagesRoutingModule } from "./pixelChallenge-routing.module";
 import { LayoutComponent } from "./pages/layout/layout.component";
 import { GameComponent } from "./pages/game/game.component";
 import { WelcomeComponent } from "./pages/welcome/welcome.component";
+import { FormsModule } from "@angular/forms";
+import { ProfileComponent } from "./pages/profile/profile.component";
 
 @NgModule({
     declarations: [
         LayoutComponent,
         GameComponent,
         WelcomeComponent,
-        ClassificationComponent
+        ClassificationComponent,
+        ProfileComponent
     ],
     imports: [
         CommonModule,
         MaterialModule,
-        PagesRoutingModule
+        PagesRoutingModule,
+        FormsModule
     ],
     exports: [
 

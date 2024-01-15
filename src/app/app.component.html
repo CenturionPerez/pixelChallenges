@@ -12,7 +12,7 @@
             <span>Modo invitado</span>
           </button>
 
-          
+
           <button mat-menu-item (click)="navigateToGame()" [ngClass]="{ no_logged: !logged }">
             <mat-icon>person</mat-icon>
             <span>Un jugador</span>
@@ -40,24 +40,10 @@
           </a></li>
 
 <!-- parte del perfil la cual tiene un menú con dos opciones -->
-          <li class="link"><a [mat-menu-trigger-for]="menuPerfil" [ngClass]="{ no_logged: !logged }">
+          <li class="link"><a (click)="goToPerfil()" [ngClass]="{ no_logged: !logged }">
             <mat-icon>account_circle</mat-icon>
             Perfil
           </a></li>
-
-          <mat-menu #menuPerfil=""matMenu>
-
-            <button mat-menu-item (click)="goToPerfil()" class="profileBtn">
-              <mat-icon>manage_accounts</mat-icon>
-              <span>Ver mi perfil</span>
-            </button>
-
-            <button mat-menu-item (click)="navigateToGame()" class="profileBtn">
-              <mat-icon>history</mat-icon>
-              <span>Historial de compras</span>
-            </button>
-
-          </mat-menu>
 
           <li class="link"><a (click)="navigateToGame()" [ngClass]="{ no_logged: !logged }">
             <mat-icon>storefront</mat-icon>
@@ -73,7 +59,7 @@
       <ng-template #noLogged>
         <button class="btn btn-init" (click)="gotoinit()">Iniciar Sesión</button>
       </ng-template>
-  
+
     </nav>
 
   <div class="content">
