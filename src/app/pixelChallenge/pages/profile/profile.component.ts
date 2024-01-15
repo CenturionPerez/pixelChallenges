@@ -14,6 +14,7 @@ import { literals } from 'src/app/utils/interfaces/util.constants';
 export class ProfileComponent implements OnInit {
   public showInputs: boolean = false;
   public showImg: boolean = false;
+  public showProfile: boolean = false;
   public user: User = {
     email: '',
     img: '',
@@ -53,6 +54,7 @@ export class ProfileComponent implements OnInit {
         password: 'defergt54tt'
       }
       this.pixelChallengeService.showPixelChallengeSpinner(false);
+      this.showProfile = true;
     })
   }
 
