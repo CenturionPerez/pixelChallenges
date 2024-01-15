@@ -32,6 +32,7 @@ export class PixelChallengeService {
     }
 
     public getUser(data: string): Observable<User> {
+        this.showPixelChallengeSpinner(true);
         return this.http.get<User>(this.urlApi + 'user/' + data).pipe(delay(2000));
     }
     

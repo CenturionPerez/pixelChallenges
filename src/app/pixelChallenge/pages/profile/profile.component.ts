@@ -52,6 +52,7 @@ export class ProfileComponent implements OnInit {
         name: 'Prueba Gmail',
         password: 'defergt54tt'
       }
+      this.pixelChallengeService.showPixelChallengeSpinner(false);
     })
   }
 
