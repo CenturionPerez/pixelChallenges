@@ -1,8 +1,40 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component} from '@angular/core';
+import { Router } from '@angular/router';
+
+
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.componen.html'
+  selector: 'profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent { }
+export class ProfileComponent {
+
+  constructor(private router: Router) { }
+
+
+  showInputs: boolean = false;
+  showImg: boolean = false;
+
+ public changeImage(): void {
+
+ }
+
+ public showInputPass(): void {
+
+  this.showInputs = !this.showInputs;
+
+ }
+
+ public showInputImg(): void {
+  this.showImg = !this.showImg;
+ }
+
+ public confirmarCambio(): void {
+
+ }
+
+  public update(): void {
+
+  }
+}
