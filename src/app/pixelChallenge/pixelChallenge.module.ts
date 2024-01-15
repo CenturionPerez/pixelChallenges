@@ -23,8 +23,6 @@ import { ProfileComponent } from "./pages/profile/profile.component";
     imports: [
         CommonModule,
         MaterialModule,
-        PagesRoutingModule,
-        ReactiveFormsModule,
         FormsModule
     ],
     exports: [
