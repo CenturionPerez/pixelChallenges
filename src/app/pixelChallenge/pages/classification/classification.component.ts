@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { TEMPLATE_GAMER } from './interfaces/mocks/getGamerList';
-import { Gamer } from './interfaces/classification.interface';
-import { PixelChallengeService } from '../services/pixelChallenge.service';
+import { PixelChallengeService } from '../../services/pixelChallenge.service';
 
 @Component({
   selector: 'classification',

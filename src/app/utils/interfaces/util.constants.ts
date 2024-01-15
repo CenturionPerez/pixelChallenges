@@ -11,5 +11,7 @@ export const literals: Literals = {
     init_session_ok: 'Inicio de sesión completado',
     register_session_ok: 'Registro completado',
     login_sesion_ko: 'Ha ocurrido un error, vuelve a intentarlo',
-    loggout_session_ok: 'Has cerrado sesión con éxito'
+    loggout_session_ok: 'Has cerrado sesión con éxito',
+    modify_user_ok: 'Has actualizado correctamente el perfil',
+    modify_user_ko: 'Error al actualizar el perfil'
 } 
