@@ -1,5 +1,19 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
+import {
+  MatDialog,
+  MatDialogRef,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogTitle,
+  MatDialogContent,
+} from '@angular/material/dialog';
+import { formatCurrency } from '@angular/common';
+import { ProfileFormComponent } from './Components/profile-form/profile-form.component';
+
+
+
+
 
 
 
@@ -10,27 +24,22 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent {
 
-  constructor(private router: Router) { }
-
-
   showInputs: boolean = false;
   showImg: boolean = false;
 
- public changeImage(): void {
+  constructor(private router: Router, public dialog: MatDialog) { }
 
- }
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(ProfileFormComponent, {
+      width: '500px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
 
  public showInputPass(): void {
 
   this.showInputs = !this.showInputs;
-
- }
-
- public showInputImg(): void {
-  this.showImg = !this.showImg;
- }
-
- public confirmarCambio(): void {
 
  }
 
