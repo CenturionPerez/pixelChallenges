@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClientAuthentication } from '../../interfaces/auth.interface';
 import { literals } from 'src/app/utils/interfaces/util.constants';
 import { Literals } from 'src/app/utils/interfaces/util.interface';

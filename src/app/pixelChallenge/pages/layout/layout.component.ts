@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { PixelChallengeService } from '../services/pixelChallenge.service';
+
 import { Observable, Subscription, of } from 'rxjs';
+import { PixelChallengeService } from '../../services/pixelChallenge.service';
 
 @Component({
   selector: 'layout',

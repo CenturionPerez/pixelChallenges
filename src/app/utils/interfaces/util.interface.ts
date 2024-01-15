@@ -20,7 +20,9 @@ interface Literals {
     init_session_ok: string,
     register_session_ok: string,
     login_sesion_ko: string,
-    loggout_session_ok: string
+    loggout_session_ok: string,
+    modify_user_ok: string,
+    modify_user_ko: string
 }
 
 export { RequestService, ResponseService, Literals }
