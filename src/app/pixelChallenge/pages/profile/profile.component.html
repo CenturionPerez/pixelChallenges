@@ -1,4 +1,4 @@
-<div class="profilemodify">
+<div class="profilemodify" [ngStyle]=" { 'visibility': showProfile? 'visible': 'hidden' }">
 
   <div class="mostrarDatos">
 
@@ -14,9 +14,8 @@
       <p><strong>Nombre: </strong>{{user.name}}</p>
       <p><strong>Email: </strong>{{user.email}}</p>
 
-
-
     </div>
+
 
     <div class="buttonChange">
 
@@ -24,18 +23,8 @@
         Pulse para cambiar sus datos
       </button>
 
-
     </div>
 
 
-
   </div>
-
-
-
-  <!-- <button mat-raised-button (click)="openDialog( '1500ms', '750ms')" class="updateProfile">
-    Actualizar perfil
-    <mat-icon>upgrade</mat-icon>
-  </button>-->
-
 </div>

@@ -8,7 +8,7 @@ import { AuthService } from '../../../../../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../../../interfaces/user.interface';
 import { ProfileComponent } from '../../profile.component';
-import { MatDialogClose } from '@angular/material/dialog';
+import { MatDialogClose, MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -44,6 +44,7 @@ constructor(
   private router: Router,
   private pixelChallengeService: PixelChallengeService,
   private authService: AuthService,
+  public dialogRef: MatDialogRef<ProfileFormComponent>
   ) { }
 
   public updateUserForm: FormGroup = new FormGroup({
@@ -74,16 +75,22 @@ constructor(
     };
   };
 
-public update(): void {
-  this.pixelChallengeService.modifyUser(this.requestModifyData()).subscribe((resp) => {
-    if(resp){
-      this.authService.generateSnackBar(false, literals.modify_user_ok);
-      this.pixelChallengeService.getUser('Example');
-    }else{
-      this.authService.generateSnackBar(true, literals.modify_user_ko);
-    }
-  });
-};
+  public update(): void {
+    this.pixelChallengeService.modifyUser(this.requestModifyData()).subscribe((resp) => {
+      if(resp){
+        this.authService.generateSnackBar(false, literals.modify_user_ok);
+        this.pixelChallengeService.getUser('Example');
+        this.dialogRef.close();
+      }else{
+        this.authService.generateSnackBar(true, literals.modify_user_ko);
+      }
+    });
+  };
+
+  public closeDialog(): void {
+    this.dialogRef.close();
+  }
+
 
 
 }

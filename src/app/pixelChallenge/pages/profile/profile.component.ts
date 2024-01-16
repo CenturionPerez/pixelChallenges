@@ -30,11 +30,12 @@ export class ProfileComponent implements OnInit {
     password: ''
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  public openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(ProfileFormComponent, {
       width: '500px',
       enterAnimationDuration,
       exitAnimationDuration,
+      panelClass: 'custom-dialog-container',
     });
   }
 

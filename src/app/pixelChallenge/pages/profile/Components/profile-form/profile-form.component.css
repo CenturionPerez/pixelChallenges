@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Kanit', sans-serif;
+}
+
+.mat-mdc-card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.formContent {
+  margin-top: 10px;
+  display: grid;
+}
+
+.update {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.updateBtn, .closeBtn {
+  background: linear-gradient(to right, #888888,  #5d5d5d);
+  margin-bottom: 10px;
+}
+
+.closeBtn {
+  margin-left: 20px;
+}
+
+::ng-deep mat-snack-bar-container.snackbarOk > div {
+  background-color: #2dc186 !important;
+}
+
+::ng-deep mat-snack-bar-container.snackbarKo > div {
+  background-color: #fd4134 !important;
+}
+
+::ng-deep simple-snack-bar div[matsnackbarlabel] {
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: bold;
+}
