@@ -7,16 +7,10 @@ import { PagesRoutingModule } from "./pixelChallenge-routing.module";
 import { LayoutComponent } from "./pages/layout/layout.component";
 import { GameComponent } from "./pages/game/game.component";
 import { WelcomeComponent } from "./pages/welcome/welcome.component";
-<<<<<<< HEAD
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ProfileComponent } from "./pages/profile/profile.component";
 import { ProfileFormComponent } from './pages/profile/Components/profile-form/profile-form.component';
 
-
-=======
-import { FormsModule } from "@angular/forms";
-import { ProfileComponent } from "./pages/profile/profile.component";
->>>>>>> origin/integration-apb
 
 @NgModule({
     declarations: [
@@ -24,23 +18,17 @@ import { ProfileComponent } from "./pages/profile/profile.component";
         GameComponent,
         WelcomeComponent,
         ClassificationComponent,
-<<<<<<< HEAD
         ProfileComponent,
-        ProfileFormComponent
-=======
-        ProfileComponent
->>>>>>> origin/integration-apb
+        ProfileFormComponent,
+
     ],
     imports: [
         CommonModule,
         MaterialModule,
-<<<<<<< HEAD
         FormsModule,
-        PagesRoutingModule
-=======
         PagesRoutingModule,
-        FormsModule
->>>>>>> origin/integration-apb
+        FormsModule,
+        ReactiveFormsModule
     ],
     exports: [
 

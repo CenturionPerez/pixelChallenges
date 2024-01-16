@@ -1,4 +1,4 @@
-<div class="profilemodify" [ngStyle]=" { 'visibility': showProfile? 'visible': 'hidden' }">
+<div class="profilemodify">
 
   <div class="mostrarDatos">
 
@@ -11,46 +11,23 @@
       </div>
 
 
-<<<<<<< HEAD
-      <p><strong>Nombre: </strong>Alberto Suárez Fernandez</p>
-      <p><strong>Email: </strong>example@gmail.com</p>
-      <p><strong>Teléfono: </strong>666555444</p>
-=======
-      <a><strong>Nombre:</strong></a>     <!-- codigo para mostrar el nombre -->
-      <a><strong>Email: </strong></a>     <!-- codigo para mostrar el nombre -->
-      <a><strong>Teléfono: </strong></a>  <!-- codigo para mostrar el nombre -->
+      <p><strong>Nombre: </strong>{{user.name}}</p>
+      <p><strong>Email: </strong>{{user.email}}</p>
+
+
 
     </div>
 
     <div class="buttonChange">
 
-      <button mat-raised-button color="accent" class="pssChange" (click)="showInputPass()" *ngIf="!showInputs">
-        Pulse para cambiar contraseña
+      <button mat-raised-button color="accent" class="pssChange" (click)="openDialog('1500ms', '750ms')" >
+        Pulse para cambiar sus datos
       </button>
 
-      <button mat-raised-button color="primary" class="pssCancel" (click)="showInputPass()" *ngIf="showInputs">
-        Pulse para cancelar el cambio
-      </button>
 
     </div>
 
 
-    <div *ngIf="showInputs" class="passDiv">
-      <mat-form-field>
-        <input matInput type="password" placeholder="Contraseña antigua">
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput type="password" placeholder="Nueva contraseña">
-      </mat-form-field>
-
-
-    <mat-form-field>
-      <input matInput type="password" placeholder="Confirmar nueva contraseña">
-    </mat-form-field>
->>>>>>> origin/integration-apb
-
-    </div>
 
   </div>
 
