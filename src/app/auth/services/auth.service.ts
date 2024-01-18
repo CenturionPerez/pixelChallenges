@@ -12,7 +12,7 @@ import { User } from 'src/app/pixelChallenge/pages/interfaces/user.interface';
 })
 export class AuthService {
 
-  private urlApi: string = 'http://localhost:5000/v1/';
+  private urlApi: string = 'http://localhost:8080/';
 
   constructor(private http: HttpClient, private _snackbar: MatSnackBar) { }
 

@@ -1,23 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { literals } from 'src/app/utils/interfaces/util.constants';
 import { Literals } from 'src/app/utils/interfaces/util.interface';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { PixelChallengeService } from 'src/app/pixelChallenge/services/pixelChallenge.service';
 import { AuthService } from '../../../../../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../../../interfaces/user.interface';
 import { ProfileComponent } from '../../profile.component';
-import { MatDialogClose, MatDialogRef } from '@angular/material/dialog';
-
-
 
 @Component({
   selector: 'app-profile-form',
   templateUrl: './profile-form.component.html',
   styleUrls: ['./profile-form.component.css']
 })
-export class ProfileFormComponent {
+export class ProfileFormComponent implements OnInit {
+
+  @Output() callGetUser: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() showComponentProfile: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  public showFormProfile: boolean = false;
   public literals: Literals = literals;
   public profileForm: FormGroup = new FormGroup({
     name: new FormControl('', [
@@ -44,8 +45,12 @@ constructor(
   private router: Router,
   private pixelChallengeService: PixelChallengeService,
   private authService: AuthService,
-  public dialogRef: MatDialogRef<ProfileFormComponent>
+  private profileComponent: ProfileComponent
   ) { }
+
+  ngOnInit(): void {
+    this.openForm();
+  }
 
   public updateUserForm: FormGroup = new FormGroup({
     username: new FormControl('',[
@@ -76,21 +81,25 @@ constructor(
   };
 
   public update(): void {
+    this.pixelChallengeService.showPixelChallengeSpinner(true);
     this.pixelChallengeService.modifyUser(this.requestModifyData()).subscribe((resp) => {
+      this.pixelChallengeService.showPixelChallengeSpinner(false);
       if(resp){
+        this.callGetUser.emit();
         this.authService.generateSnackBar(false, literals.modify_user_ok);
-        this.pixelChallengeService.getUser('Example');
-        this.dialogRef.close();
       }else{
         this.authService.generateSnackBar(true, literals.modify_user_ko);
       }
     });
   };
 
-  public closeDialog(): void {
-    this.dialogRef.close();
+  public openForm(): void {
+    this.showFormProfile = true;
   }
-
-
-
+ 
+  public closeForm(): void {
+    this.showFormProfile = false;
+    this.showComponentProfile.emit(false);
+  }
+ 
 }
