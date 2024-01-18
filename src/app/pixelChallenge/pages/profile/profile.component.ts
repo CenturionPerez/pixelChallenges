@@ -1,20 +1,15 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  MatDialog,
-  MatDialogRef,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogTitle,
-  MatDialogContent,
+  MatDialog
 } from '@angular/material/dialog';
-import { formatCurrency } from '@angular/common';
+
 import { ProfileFormComponent } from './Components/profile-form/profile-form.component';
 import { PixelChallengeService } from '../../services/pixelChallenge.service';
 import { User } from '../interfaces/user.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../auth/services/auth.service';
-import { literals } from 'src/app/utils/interfaces/util.constants';
+
 
 @Component({
   selector: 'profile',
@@ -23,20 +18,12 @@ import { literals } from 'src/app/utils/interfaces/util.constants';
 })
 export class ProfileComponent implements OnInit {
   public showProfile: boolean = false;
+  public clickedUpdateProfile: boolean = false;
   public user: User = {
     email: '',
     img: '',
     name: '',
     password: ''
-  }
-
-  public openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(ProfileFormComponent, {
-      width: '500px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-      panelClass: 'custom-dialog-container',
-    });
   }
 
   public updateUserForm: FormGroup = new FormGroup({
@@ -78,8 +65,17 @@ export class ProfileComponent implements OnInit {
   //   });
   // };
 
-  private getUser(): void {
+  public updateProfileComponent(value: boolean): void {
+    if(value){
+      this.clickedUpdateProfile = true;
+    }else{
+      this.clickedUpdateProfile = false;
+    }
+  }
+
+  public getUser(): void {
     this.showProfile = false;
+    this.pixelChallengeService.showPixelChallengeSpinner(true);
     this.pixelChallengeService.getUser('example').subscribe((resp) => {
       // this.user = resp
       this.user = {
@@ -101,4 +97,6 @@ export class ProfileComponent implements OnInit {
       password: this.updateUserForm.get('password')?.value
     };
   };
+
+
 }

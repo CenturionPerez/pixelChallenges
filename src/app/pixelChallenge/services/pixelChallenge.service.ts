@@ -10,7 +10,7 @@ import { ResponseService } from "src/app/utils/interfaces/util.interface";
     providedIn: 'root'
   })
 export class PixelChallengeService {
-    private urlApi: string = 'http://localhost:5000/v1/';
+    private urlApi: string = 'http://localhost:8080/';
 
     constructor(private http: HttpClient) { }
 
@@ -32,7 +32,6 @@ export class PixelChallengeService {
     }
 
     public getUser(data: string): Observable<User> {
-        this.showPixelChallengeSpinner(true);
         return this.http.get<User>(this.urlApi + 'user/' + data).pipe(delay(2000));
     }
     
@@ -44,7 +43,8 @@ export class PixelChallengeService {
             catchError((error) => {
               console.error(error);
               return of(false);
-            })
+            }),
+            delay(2000)
         )
     }
 }
