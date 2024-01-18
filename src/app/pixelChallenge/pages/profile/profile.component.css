@@ -5,14 +5,9 @@
   justify-content: center;
   margin: 0 auto;
   color: #fff;
+
 }
 
-.datosUsuario {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
 
 .buttonChange {
   justify-content: center;
@@ -24,15 +19,38 @@
   align-items: center;
 }
 
+.mostrarDatos {
+  width: 400px;
+  border: 2px solid #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+.datosUsuario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+
+}
+
 
 .datosUsuario h2 {
   margin-bottom: 10px;
   font-size: 24px;
+  max-height: 100%;
+  max-width: 100%;
 }
 
-.datosUsuario a {
-  display: block;
+.datosUsuario p {
+  display: flex;
   margin-bottom: 15px;
+  max-width: 100%;
+}
+
+.datosUsuario p strong {
+  color: #0aabe0;
   font-size: 18px;
 }
 
@@ -50,26 +68,19 @@
   border-radius: 50%;
 }
 
-.pssChange,
-.pssCancel,
-.confirmChange,
+
 .updateProfile {
   margin-bottom: 20px;
   color: #fff;
-}
-
-.confirmChange {
-  display: flex;
-  justify-content: center;
-}
-
-.updateProfile {
   text-align: center;
   justify-content: center;
 }
 
 
-.passDiv {
-  display: block;
-  text-align: center;
+::ng-deep .custom-dialog-container {
+  mat-dialog-container {
+    background-color: #d1d1d1;
+    border-radius: 10px;
+    padding: 4px;
+  }
 }

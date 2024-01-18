@@ -11,47 +11,20 @@
       </div>
 
 
-      <a><strong>Nombre:</strong></a>     <!-- codigo para mostrar el nombre -->
-      <a><strong>Email: </strong></a>     <!-- codigo para mostrar el nombre -->
-      <a><strong>Teléfono: </strong></a>  <!-- codigo para mostrar el nombre -->
+      <p><strong>Nombre: </strong>{{user.name}}</p>
+      <p><strong>Email: </strong>{{user.email}}</p>
 
     </div>
+
 
     <div class="buttonChange">
 
-      <button mat-raised-button color="accent" class="pssChange" (click)="showInputPass()" *ngIf="!showInputs">
-        Pulse para cambiar contraseña
-      </button>
-
-      <button mat-raised-button color="primary" class="pssCancel" (click)="showInputPass()" *ngIf="showInputs">
-        Pulse para cancelar el cambio
+      <button mat-raised-button color="accent" class="pssChange" (click)="openDialog('1500ms', '750ms')" >
+        Pulse para cambiar sus datos
       </button>
 
     </div>
 
-
-    <div *ngIf="showInputs" class="passDiv">
-      <mat-form-field>
-        <input matInput type="password" placeholder="Contraseña antigua">
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput type="password" placeholder="Nueva contraseña">
-      </mat-form-field>
-
-
-    <mat-form-field>
-      <input matInput type="password" placeholder="Confirmar nueva contraseña">
-    </mat-form-field>
-
-    </div>
 
   </div>
-
-
-  <button type="submit" mat-raised-button (click)="update()" class="updateProfile">
-    Actualizar perfil
-    <mat-icon>upgrade</mat-icon>
-  </button>
-
 </div>

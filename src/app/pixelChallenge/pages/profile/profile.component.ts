@@ -1,5 +1,15 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import {
+  MatDialog,
+  MatDialogRef,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogTitle,
+  MatDialogContent,
+} from '@angular/material/dialog';
+import { formatCurrency } from '@angular/common';
+import { ProfileFormComponent } from './Components/profile-form/profile-form.component';
 import { PixelChallengeService } from '../../services/pixelChallenge.service';
 import { User } from '../interfaces/user.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -12,14 +22,21 @@ import { literals } from 'src/app/utils/interfaces/util.constants';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  public showInputs: boolean = false;
-  public showImg: boolean = false;
   public showProfile: boolean = false;
   public user: User = {
     email: '',
     img: '',
     name: '',
     password: ''
+  }
+
+  public openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(ProfileFormComponent, {
+      width: '500px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      panelClass: 'custom-dialog-container',
+    });
   }
 
   public updateUserForm: FormGroup = new FormGroup({
@@ -40,32 +57,26 @@ export class ProfileComponent implements OnInit {
   });
 
   constructor(
-    private router: Router, 
-    private pixelChallengeService: PixelChallengeService, 
-    private authService: AuthService) { }
+    private router: Router,
+    private pixelChallengeService: PixelChallengeService,
+    private authService: AuthService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getUser();
   }
 
-  public showInputPass(): void {
-  this.showInputs = !this.showInputs;
-  }
 
-  public showInputImg(): void {
-  this.showImg = !this.showImg;
-  }
-
-  public update(): void {
-    this.pixelChallengeService.modifyUser(this.requestModifyData()).subscribe((resp) => {
-      if(resp){
-        this.authService.generateSnackBar(false, literals.modify_user_ok);
-        this.getUser();
-      }else{
-        this.authService.generateSnackBar(true, literals.modify_user_ko);
-      }
-    });
-  };
+  // public update(): void {
+  //   this.pixelChallengeService.modifyUser(this.requestModifyData()).subscribe((resp) => {
+  //     if(resp){
+  //       this.authService.generateSnackBar(false, literals.modify_user_ok);
+  //       this.getUser();
+  //     }else{
+  //       this.authService.generateSnackBar(true, literals.modify_user_ko);
+  //     }
+  //   });
+  // };
 
   private getUser(): void {
     this.showProfile = false;

@@ -8,6 +8,8 @@ import { MatSelectCountryModule } from '@angular-material-extensions/select-coun
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatSelectCountryModule.forRoot('es'),
     HttpClientModule,
     MaterialModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

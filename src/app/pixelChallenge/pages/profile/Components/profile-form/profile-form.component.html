@@ -1,0 +1,48 @@
+
+<div class="container">
+  <div class="form">
+
+      <mat-card-header>
+        <mat-card-title class="tittle">Modifica tus datos en el siguiente formulario</mat-card-title>
+      </mat-card-header>
+
+
+    <mat-card-content (ngSubmit)="update()" [formGroup]="profileForm" #form="ngForm" class="formContent">
+
+
+      <mat-form-field [formGroup]="profileForm">
+        <mat-label>Nombre: </mat-label>
+        <input matInput formControlName="name">
+        <mat-error>{{literals.error_name}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field [formGroup]="profileForm">
+        <mat-label>Email: </mat-label>
+        <input matInput formControlName="email" [(ngModel)]="user.email">
+        <mat-error>{{literals.error_email}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field [formGroup]="profileForm">
+        <mat-label>
+            Contraseña
+            <mat-icon>visibility_off</mat-icon>
+             :
+        </mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-error>{{literals.error_password}}</mat-error>
+      </mat-form-field>
+
+
+
+      <div class="update">
+        <button mat-raised-button (click)="update()" [disabled]="!form.valid || form.pristine" class="updateBtn">
+          Actualizar
+        </button>
+        <button mat-raised-button (click)="closeDialog()" class="closeBtn">Cerrar sin guardar cambios</button>
+      </div>
+
+
+    </mat-card-content>
+  </div>
+</div>
+
