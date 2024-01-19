@@ -1,12 +1,12 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { literals } from 'src/app/utils/interfaces/util.constants';
 import { Literals } from 'src/app/utils/interfaces/util.interface';
 import { PixelChallengeService } from 'src/app/pixelChallenge/services/pixelChallenge.service';
 import { AuthService } from '../../../../../auth/services/auth.service';
 import { Router } from '@angular/router';
-import { User } from '../../../interfaces/user.interface';
 import { ProfileComponent } from '../../profile.component';
+import { User } from 'src/app/interfaces/user.interface';
 
 @Component({
   selector: 'app-profile-form',
@@ -32,25 +32,7 @@ export class ProfileFormComponent implements OnInit {
     ]),
     img: new FormControl('',[
     ]),
-});
-public user: User = {
-  email: '',
-  img: '',
-  name: '',
-  password: ''
-}
-
-
-constructor(
-  private router: Router,
-  private pixelChallengeService: PixelChallengeService,
-  private authService: AuthService,
-  private profileComponent: ProfileComponent
-  ) { }
-
-  ngOnInit(): void {
-    this.openForm();
-  }
+  });
 
   public updateUserForm: FormGroup = new FormGroup({
     username: new FormControl('',[
@@ -69,16 +51,25 @@ constructor(
     ])
   });
 
+  public user: User = {
+    name: '',
+    email: '',
+    nationality: '',
+    rank: '',
+    password: '',
+    score: '',
+    msisdn: ''
+  }
 
+  constructor(
+    private router: Router,
+    private pixelChallengeService: PixelChallengeService,
+    private authService: AuthService,
+    private profileComponent: ProfileComponent) { }
 
-  private requestModifyData(): User {
-    return {
-      email: this.updateUserForm.get('email')?.value,
-      img: this.updateUserForm.get('img')?.value,
-      name: this.updateUserForm.get('username')?.value,
-      password: this.updateUserForm.get('password')?.value
-    };
-  };
+  ngOnInit(): void {
+    this.openForm();
+  }
 
   public update(): void {
     this.pixelChallengeService.showPixelChallengeSpinner(true);
@@ -100,5 +91,16 @@ constructor(
   public closeForm(): void {
     this.showComponentProfile.emit(false);
   }
- 
+  private requestModifyData(): User {
+    return {
+      name: this.updateUserForm.get('username')?.value,
+      email: this.updateUserForm.get('email')?.value,
+      nationality: '',
+      rank: '',
+      password: this.updateUserForm.get('password')?.value,
+      score: '',
+      msisdn: ''
+      //img: this.updateUserForm.get('img')?.value
+    };
+  };
 }
