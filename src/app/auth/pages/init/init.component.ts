@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ClientAuthentication } from '../../interfaces/auth.interface';
 import { literals } from 'src/app/utils/interfaces/util.constants';
 import { Literals } from 'src/app/utils/interfaces/util.interface';
+import { User } from 'src/app/interfaces/user.interface';
 
 @Component({
   selector: 'init',
@@ -57,10 +57,15 @@ export class InitComponent {
     }
   }
 
-  private prepareRequest(): ClientAuthentication {
+  private prepareRequest(): User {
     return {
+      name: '',
       email: this.initForm.get('email')?.value,
-      password: this.initForm.get('password')?.value
+      nationality: '',
+      rank: '',
+      password: this.initForm.get('password')?.value,
+      score: '',
+      msisdn: ''
     }
   }
 

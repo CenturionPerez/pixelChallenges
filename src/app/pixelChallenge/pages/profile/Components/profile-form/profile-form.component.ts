@@ -15,7 +15,7 @@ import { ProfileComponent } from '../../profile.component';
 })
 export class ProfileFormComponent implements OnInit {
 
-  @Output() callGetUser: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() callGetUser: EventEmitter<void> = new EventEmitter<void>();
   @Output() showComponentProfile: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public showFormProfile: boolean = false;
@@ -98,7 +98,6 @@ constructor(
   }
  
   public closeForm(): void {
-    this.showFormProfile = false;
     this.showComponentProfile.emit(false);
   }
  

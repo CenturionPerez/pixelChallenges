@@ -1,11 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, delay, map, of, throwError } from 'rxjs';
 import { RequestService, ResponseService } from '../../utils/interfaces/util.interface';
-import { ClientAuthentication, ClientRegister } from '../interfaces/auth.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { literals } from 'src/app/utils/interfaces/util.constants';
-import { User } from 'src/app/pixelChallenge/pages/interfaces/user.interface';
+import { User } from 'src/app/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +12,7 @@ import { User } from 'src/app/pixelChallenge/pages/interfaces/user.interface';
 export class AuthService {
 
   private urlApi: string = 'http://localhost:8080/';
+  private headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
   constructor(private http: HttpClient, private _snackbar: MatSnackBar) { }
 
@@ -31,6 +31,7 @@ export class AuthService {
   setUserLoggedInSessionStorage(value: boolean) {
     console.log('userLogged:', value);
     this.userLoggedSubject.next(value);
+    sessionStorage.removeItem('id');
     sessionStorage.setItem(this.sessionKey, JSON.stringify(value));
   }
 
@@ -46,27 +47,20 @@ export class AuthService {
     });
   }
 
-  public verifyUser(data: ClientAuthentication): Observable<boolean> {
-    return this.initCall({apiUrl: 'verifyUser', data});
+  public verifyUser(data: User): Observable<boolean> {
+    return this.initCall({apiUrl: 'verify', data});
   }
 
-  public createUser(data: ClientRegister): Observable<boolean> {
-    return this.initCall({apiUrl: 'createUser', data});
-  }
-
-  public getUser(data: string): Observable<User> {
-    return this.http.get<User>(this.urlApi + 'user/' + data).pipe(delay(2000));
-  }
-
-  public modifyUser(data: User): Observable<any> {
-    return this.http.put<User>(this.urlApi + 'updateUser', data);
+  public createUser(data: User): Observable<boolean> {
+    return this.initCall({apiUrl: 'register', data});
   }
 
   private initCall({apiUrl, data} : RequestService): Observable<boolean> {
     console.log(data);
-    return this.http.post<ResponseService>(this.urlApi + apiUrl, data).pipe(
+    return this.http.post<ResponseService>(this.urlApi + apiUrl, data, {headers: this.headers}).pipe(
       map((resp) => {
-        return resp.data as boolean;
+        sessionStorage.setItem('id', resp.data);
+        return true;
       }),
       catchError((error) => {
         console.error(error);

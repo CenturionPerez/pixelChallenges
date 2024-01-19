@@ -10,22 +10,21 @@
         <img src="./../../../assets/defectimg.jpg" alt="Foto de perfil">
       </div>
 
-
       <p><strong>Nombre: </strong>{{user.name}}</p>
       <p><strong>Email: </strong>{{user.email}}</p>
 
     </div>
-
 
     <div class="buttonChange">
 
       <button mat-raised-button color="accent" class="pssChange" (click)="updateProfileComponent(true)" >
         Pulse para cambiar sus datos
       </button>
+
     </div>
   </div>
 </div>
 
 <ng-container *ngIf="clickedUpdateProfile">
-  <app-profile-form (showProfile)="getUser()" (showComponentProfile)="updateProfileComponent(false)"></app-profile-form>
+  <app-profile-form (callGetUser)="updateProfileComponent(false); getUser()" (showComponentProfile)="updateProfileComponent(false)"></app-profile-form>
 </ng-container>
