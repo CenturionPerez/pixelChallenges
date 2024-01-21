@@ -8,7 +8,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../auth/services/auth.service';
 import { User } from 'src/app/interfaces/user.interface';
 
-
 @Component({
   selector: 'profile',
   templateUrl: './profile.component.html',
@@ -65,7 +64,7 @@ export class ProfileComponent implements OnInit {
   public getUser(): void {
     this.showProfile = false;
     this.pixelChallengeService.showPixelChallengeSpinner(true);
-    this.pixelChallengeService.getUser('example').subscribe((resp) => {
+    this.pixelChallengeService.getUser().subscribe((resp) => {
       this.user = resp
       // this.user = {
       //   name: '',

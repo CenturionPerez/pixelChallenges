@@ -62,7 +62,6 @@ export class ProfileFormComponent implements OnInit {
   }
 
   constructor(
-    private router: Router,
     private pixelChallengeService: PixelChallengeService,
     private authService: AuthService,
     private profileComponent: ProfileComponent) { }

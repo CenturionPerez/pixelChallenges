@@ -11,7 +11,7 @@ import { User } from 'src/app/interfaces/user.interface';
 })
 export class AuthService {
 
-  private urlApi: string = 'http://localhost:8080/';
+  private urlApi: string = 'http://localhost:8080/api/v1/';
   private headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
   constructor(private http: HttpClient, private _snackbar: MatSnackBar) { }
@@ -56,6 +56,10 @@ export class AuthService {
   }
 
   private initCall({apiUrl, data} : RequestService): Observable<boolean> {
+    this.headers.set('Access-Control-Allow-Origin','*');
+    this.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    this.headers.set('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    this.headers.set('Access-Control-Allow-Credentials', "true")
     console.log(data);
     return this.http.post<ResponseService>(this.urlApi + apiUrl, data, {headers: this.headers}).pipe(
       map((resp) => {

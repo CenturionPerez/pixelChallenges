@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, catchError, delay, map, of } from "rxjs";
+import { BehaviorSubject, EMPTY, Observable, catchError, delay, map, of } from "rxjs";
 import { Gamer } from "../pages/classification/interfaces/classification.interface";
 import { TEMPLATE_GAMER } from "../pages/classification/interfaces/mocks/getGamerList";
 import { ResponseService } from "src/app/utils/interfaces/util.interface";
@@ -10,7 +10,7 @@ import { User } from "src/app/interfaces/user.interface";
     providedIn: 'root'
   })
 export class PixelChallengeService {
-    private urlApi: string = 'http://localhost:8080/';
+    private urlApi: string = 'http://localhost:8080/api/v1/';
     private headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
     constructor(private http: HttpClient) { }
@@ -32,8 +32,20 @@ export class PixelChallengeService {
         );
     }
 
-    public getUser(data: string): Observable<User> {
-        return this.http.get<User>(this.urlApi + 'user/' + data, {headers: this.headers}).pipe(delay(2000));
+    public getUser(): Observable<User> {
+        const idUser = sessionStorage.getItem('id');
+        if(idUser){
+            return this.http.get<User>(this.urlApi + 'user/' + idUser, {headers: this.headers}).pipe(
+                catchError((error) => {
+                    console.error('Error al obtener usuario:', error)
+                    return EMPTY;
+                }),
+                delay(2000)
+            );
+        }
+        return new Observable((observer) => {
+            observer.error('ID Not found');
+        });
     }
     
     public modifyUser(data: User): Observable<boolean> {
