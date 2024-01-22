@@ -44,7 +44,6 @@ export class ProfileComponent implements OnInit {
   });
 
   constructor(
-    private router: Router,
     private pixelChallengeService: PixelChallengeService,
     private authService: AuthService,
     public dialog: MatDialog) { }

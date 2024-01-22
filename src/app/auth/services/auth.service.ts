@@ -31,8 +31,16 @@ export class AuthService {
   setUserLoggedInSessionStorage(value: boolean) {
     console.log('userLogged:', value);
     this.userLoggedSubject.next(value);
-    sessionStorage.removeItem('id');
     sessionStorage.setItem(this.sessionKey, JSON.stringify(value));
+  }
+
+  getIdUserSession(): number {
+    const idUser = sessionStorage.getItem('id');
+    return idUser? parseInt(idUser): 0;
+  }
+
+  deletedIdUserSession(): void {
+    sessionStorage.removeItem('id');
   }
 
   getUserLoggedFromSessionStorage(): boolean {
@@ -56,11 +64,6 @@ export class AuthService {
   }
 
   private initCall({apiUrl, data} : RequestService): Observable<boolean> {
-    this.headers.set('Access-Control-Allow-Origin','*');
-    this.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    this.headers.set('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    this.headers.set('Access-Control-Allow-Credentials', "true")
-    console.log(data);
     return this.http.post<ResponseService>(this.urlApi + apiUrl, data, {headers: this.headers}).pipe(
       map((resp) => {
         sessionStorage.setItem('id', resp.data);

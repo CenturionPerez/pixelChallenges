@@ -4,7 +4,6 @@ import { literals } from 'src/app/utils/interfaces/util.constants';
 import { Literals } from 'src/app/utils/interfaces/util.interface';
 import { PixelChallengeService } from 'src/app/pixelChallenge/services/pixelChallenge.service';
 import { AuthService } from '../../../../../auth/services/auth.service';
-import { Router } from '@angular/router';
 import { ProfileComponent } from '../../profile.component';
 import { User } from 'src/app/interfaces/user.interface';
 
@@ -21,7 +20,7 @@ export class ProfileFormComponent implements OnInit {
   public showFormProfile: boolean = false;
   public literals: Literals = literals;
   public profileForm: FormGroup = new FormGroup({
-    name: new FormControl('', [
+    username: new FormControl('', [
       Validators.minLength(3)
     ]),
     password: new FormControl('', [
@@ -32,23 +31,6 @@ export class ProfileFormComponent implements OnInit {
     ]),
     img: new FormControl('',[
     ]),
-  });
-
-  public updateUserForm: FormGroup = new FormGroup({
-    username: new FormControl('',[
-      Validators.required,
-      Validators.minLength(3)
-    ]),
-    email: new FormControl('', [
-      Validators.email,
-      Validators.required
-    ]),
-    img: new FormControl('',[
-      Validators.required,
-    ]),
-    password: new FormControl('', [
-      Validators.required
-    ])
   });
 
   public user: User = {
@@ -63,8 +45,7 @@ export class ProfileFormComponent implements OnInit {
 
   constructor(
     private pixelChallengeService: PixelChallengeService,
-    private authService: AuthService,
-    private profileComponent: ProfileComponent) { }
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.openForm();
@@ -92,11 +73,11 @@ export class ProfileFormComponent implements OnInit {
   }
   private requestModifyData(): User {
     return {
-      name: this.updateUserForm.get('username')?.value,
-      email: this.updateUserForm.get('email')?.value,
+      name: this.profileForm.get('username')?.value,
+      email: this.profileForm.get('email')?.value,
       nationality: '',
       rank: '',
-      password: this.updateUserForm.get('password')?.value,
+      password: this.profileForm.get('password')?.value,
       score: '',
       msisdn: ''
       //img: this.updateUserForm.get('img')?.value
