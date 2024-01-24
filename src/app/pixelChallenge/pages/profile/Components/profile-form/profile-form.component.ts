@@ -72,9 +72,7 @@ export class ProfileFormComponent implements OnInit {
   public closeForm(): void {
     this.showComponentProfile.emit(false);
   }
-<<<<<<< HEAD
 
-=======
   private requestModifyData(): User {
     return {
       name: this.profileForm.get('username')?.value,
@@ -87,5 +85,4 @@ export class ProfileFormComponent implements OnInit {
       //img: this.updateUserForm.get('img')?.value
     };
   };
->>>>>>> origin/integration-apb
 }
