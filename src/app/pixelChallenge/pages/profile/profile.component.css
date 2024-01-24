@@ -13,10 +13,18 @@
   justify-content: center;
   text-align: center;
   display: flex;
+
 }
 
-.buttonChange .pssCancel {
-  align-items: center;
+
+.dataChange::after {
+  background-color: #d47d7d;
+}
+
+.dataChange:hover {
+  transition: background-color 1s, color 1s ease-in-out;
+  color: #fff;
+  background-color: #d47d7d;
 }
 
 .mostrarDatos {
@@ -25,6 +33,8 @@
   padding: 10px;
   box-sizing: border-box;
   border-radius: 30px;
+  background: linear-gradient(to bottom, #9eb962, #3f4e26 );
+  box-shadow: 5px 4px 5px #fff;
 }
 
 .datosUsuario {
@@ -50,7 +60,7 @@
 }
 
 .datosUsuario p strong {
-  color: #0aabe0;
+  color: black;
   font-size: 18px;
 }
 
@@ -66,21 +76,4 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-}
-
-
-.updateProfile {
-  margin-bottom: 20px;
-  color: #fff;
-  text-align: center;
-  justify-content: center;
-}
-
-
-::ng-deep .custom-dialog-container {
-  mat-dialog-container {
-    background-color: #d1d1d1;
-    border-radius: 10px;
-    padding: 4px;
-  }
 }

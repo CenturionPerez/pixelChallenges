@@ -87,6 +87,7 @@ constructor(
       if(resp){
         this.callGetUser.emit();
         this.authService.generateSnackBar(false, literals.modify_user_ok);
+        this.closeForm();
       }else{
         this.authService.generateSnackBar(true, literals.modify_user_ko);
       }
@@ -96,10 +97,10 @@ constructor(
   public openForm(): void {
     this.showFormProfile = true;
   }
- 
+
   public closeForm(): void {
     this.showFormProfile = false;
     this.showComponentProfile.emit(false);
   }
- 
+
 }
