@@ -29,7 +29,10 @@
 
 
 .container img:hover {
-  animation: pulse 1s infinite;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+  transition: 1s ease;
 
 }
 

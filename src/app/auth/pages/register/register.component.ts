@@ -71,7 +71,7 @@ export class RegisterComponent {
         nationality: (this.registerForm.get('nationality')?.value).name,
         rank: '',
         password: this.registerForm.get('password')?.value,
-        score: '',
+        score: '0',
         msisdn: this.registerForm.get('msisdn')?.value
       }
     }
