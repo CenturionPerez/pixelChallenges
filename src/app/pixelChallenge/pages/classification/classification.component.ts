@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { PixelChallengeService } from '../../services/pixelChallenge.service';
+import { User } from 'src/app/interfaces/user.interface';
 
 @Component({
   selector: 'classification',
@@ -26,7 +27,7 @@ export class ClassificationComponent implements OnInit{
 
   private getClassification(): void {
     this.pixelChallengeService.showPixelChallengeSpinner(true);
-    this.pixelChallengeService.getClassification().subscribe((resp) => {
+    this.pixelChallengeService.getClassification().subscribe((resp: User[]) => {
       this.dataSource.data = resp;
       this.pixelChallengeService.showPixelChallengeSpinner(false);
       this.showTable = true;

@@ -1,15 +1,12 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {
   MatDialog
 } from '@angular/material/dialog';
-
-import { ProfileFormComponent } from './Components/profile-form/profile-form.component';
 import { PixelChallengeService } from '../../services/pixelChallenge.service';
-import { User } from '../interfaces/user.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../auth/services/auth.service';
-
+import { User } from 'src/app/interfaces/user.interface';
 
 @Component({
   selector: 'profile',
@@ -20,10 +17,13 @@ export class ProfileComponent implements OnInit {
   public showProfile: boolean = false;
   public clickedUpdateProfile: boolean = false;
   public user: User = {
-    email: '',
-    img: '',
     name: '',
-    password: ''
+    email: '',
+    nationality: '',
+    rank: '',
+    password: '',
+    score: '',
+    msisdn: ''
   }
 
   public updateUserForm: FormGroup = new FormGroup({
@@ -44,7 +44,6 @@ export class ProfileComponent implements OnInit {
   });
 
   constructor(
-    private router: Router,
     private pixelChallengeService: PixelChallengeService,
     private authService: AuthService,
     public dialog: MatDialog) { }
@@ -52,18 +51,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
   }
-
-
-  // public update(): void {
-  //   this.pixelChallengeService.modifyUser(this.requestModifyData()).subscribe((resp) => {
-  //     if(resp){
-  //       this.authService.generateSnackBar(false, literals.modify_user_ok);
-  //       this.getUser();
-  //     }else{
-  //       this.authService.generateSnackBar(true, literals.modify_user_ko);
-  //     }
-  //   });
-  // };
 
   public updateProfileComponent(value: boolean): void {
     if(value){
@@ -76,27 +63,19 @@ export class ProfileComponent implements OnInit {
   public getUser(): void {
     this.showProfile = false;
     this.pixelChallengeService.showPixelChallengeSpinner(true);
-    this.pixelChallengeService.getUser('example').subscribe((resp) => {
-      // this.user = resp
-      this.user = {
-        email: 'Prueba@gmail.commm',
-        img: 'example',
-        name: 'Prueba Gmail',
-        password: 'defergt54tt'
-      }
+    this.pixelChallengeService.getUser().subscribe((resp) => {
+      this.user = resp
+      // this.user = {
+      //   name: '',
+      //   email: '',
+      //   nationality: '',
+      //   rank: '',
+      //   password: '',
+      //   score: '',
+      //   msisdn: ''
+      // }
       this.pixelChallengeService.showPixelChallengeSpinner(false);
       this.showProfile = true;
     });
   };
-
-  private requestModifyData(): User {
-    return {
-      email: this.updateUserForm.get('email')?.value,
-      img: this.updateUserForm.get('img')?.value,
-      name: this.updateUserForm.get('username')?.value,
-      password: this.updateUserForm.get('password')?.value
-    };
-  };
-
-
 }

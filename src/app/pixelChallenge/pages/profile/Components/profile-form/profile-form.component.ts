@@ -1,12 +1,11 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { literals } from 'src/app/utils/interfaces/util.constants';
 import { Literals } from 'src/app/utils/interfaces/util.interface';
 import { PixelChallengeService } from 'src/app/pixelChallenge/services/pixelChallenge.service';
 import { AuthService } from '../../../../../auth/services/auth.service';
-import { Router } from '@angular/router';
-import { User } from '../../../interfaces/user.interface';
 import { ProfileComponent } from '../../profile.component';
+import { User } from 'src/app/interfaces/user.interface';
 
 @Component({
   selector: 'app-profile-form',
@@ -15,13 +14,13 @@ import { ProfileComponent } from '../../profile.component';
 })
 export class ProfileFormComponent implements OnInit {
 
-  @Output() callGetUser: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() callGetUser: EventEmitter<void> = new EventEmitter<void>();
   @Output() showComponentProfile: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public showFormProfile: boolean = false;
   public literals: Literals = literals;
   public profileForm: FormGroup = new FormGroup({
-    name: new FormControl('', [
+    username: new FormControl('', [
       Validators.minLength(3)
     ]),
     password: new FormControl('', [
@@ -32,53 +31,25 @@ export class ProfileFormComponent implements OnInit {
     ]),
     img: new FormControl('',[
     ]),
-});
-public user: User = {
-  email: '',
-  img: '',
-  name: '',
-  password: ''
-}
+  });
 
+  public user: User = {
+    name: '',
+    email: '',
+    nationality: '',
+    rank: '',
+    password: '',
+    score: '',
+    msisdn: ''
+  }
 
-constructor(
-  private router: Router,
-  private pixelChallengeService: PixelChallengeService,
-  private authService: AuthService,
-  private profileComponent: ProfileComponent
-  ) { }
+  constructor(
+    private pixelChallengeService: PixelChallengeService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.openForm();
   }
-
-  public updateUserForm: FormGroup = new FormGroup({
-    username: new FormControl('',[
-      Validators.required,
-      Validators.minLength(3)
-    ]),
-    email: new FormControl('', [
-      Validators.email,
-      Validators.required
-    ]),
-    img: new FormControl('',[
-      Validators.required,
-    ]),
-    password: new FormControl('', [
-      Validators.required
-    ])
-  });
-
-
-
-  private requestModifyData(): User {
-    return {
-      email: this.updateUserForm.get('email')?.value,
-      img: this.updateUserForm.get('img')?.value,
-      name: this.updateUserForm.get('username')?.value,
-      password: this.updateUserForm.get('password')?.value
-    };
-  };
 
   public update(): void {
     this.pixelChallengeService.showPixelChallengeSpinner(true);
@@ -99,8 +70,22 @@ constructor(
   }
 
   public closeForm(): void {
-    this.showFormProfile = false;
     this.showComponentProfile.emit(false);
   }
+<<<<<<< HEAD
 
+=======
+  private requestModifyData(): User {
+    return {
+      name: this.profileForm.get('username')?.value,
+      email: this.profileForm.get('email')?.value,
+      nationality: '',
+      rank: '',
+      password: this.profileForm.get('password')?.value,
+      score: '',
+      msisdn: ''
+      //img: this.updateUserForm.get('img')?.value
+    };
+  };
+>>>>>>> origin/integration-apb
 }

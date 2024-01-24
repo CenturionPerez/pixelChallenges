@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { literals } from 'src/app/utils/interfaces/util.constants';
 import { Literals } from 'src/app/utils/interfaces/util.interface';
 import { AuthService } from '../../services/auth.service';
-import { ClientRegister } from '../../interfaces/auth.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from 'src/app/interfaces/user.interface';
 
 @Component({
   selector: 'register',
@@ -39,24 +39,11 @@ export class RegisterComponent {
 
   constructor(
     private router: Router, 
-    private authService: AuthService,
-    private _snackbar: MatSnackBar){}
+    private authService: AuthService){}
 
     public navigateBack(){
       this.router.navigateByUrl('auth/init');
     }
-
-    public prepareRequest(): ClientRegister {
-      return {
-        name: this.registerForm.get('username')?.value,
-        nationality: this.registerForm.get('nationality')?.value,
-        email: this.registerForm.get('email')?.value,
-        msisdn: this.registerForm.get('msisdn')?.value,
-        password: this.registerForm.get('password')?.value,
-      }
-    }
-
-
 
     public register(): void {
       if(this.registerForm.valid){
@@ -77,4 +64,15 @@ export class RegisterComponent {
       }
     }
 
+    private prepareRequest(): User {
+      return {
+        name: this.registerForm.get('username')?.value,
+        email: this.registerForm.get('email')?.value,
+        nationality: (this.registerForm.get('nationality')?.value).name,
+        rank: '',
+        password: this.registerForm.get('password')?.value,
+        score: '',
+        msisdn: this.registerForm.get('msisdn')?.value
+      }
+    }
 }

@@ -52,6 +52,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public updateLoggedUser(): void {
     this.authService.setUserLoggedInSessionStorage(false);
+    this.authService.deletedIdUserSession();
     this.gotohome();
     this.authService.generateSnackBar(true, literals.loggout_session_ok);
   }
