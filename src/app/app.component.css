@@ -142,6 +142,10 @@ nav {
   margin-left: 100px;
 }
 
+.socials > a {
+  margin-bottom: 5px;
+}
+
 .ft .socials{
   display: flex;
   flex-direction: column;
