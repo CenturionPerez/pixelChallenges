@@ -22,7 +22,6 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
-package-lock.json
 
 # Visual Studio Code
 .vscode/*
@@ -44,3 +43,4 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+package-lock.json
