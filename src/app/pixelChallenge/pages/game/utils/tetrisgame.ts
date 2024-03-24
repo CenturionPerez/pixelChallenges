@@ -65,18 +65,10 @@ export class TetrisGame extends Phaser.Scene {
     
 
     private drawPrice(): void {
+        //Creamos intancia grafica
+        this.graphics = Phaser.Scene.prototype.add.graphics();
+        //Inicializamos datos pieza
         this.inicializePropertiesFigure();
-        //Creamos intancia grafica y pusheamos
-        this.graphics = this.add.graphics();
-        const piece: number[][] = JSON.parse(JSON.stringify(this.generateSpawnFigure()));
-        this.currentPiece = {
-            totalCols: piece[0].length,
-            totalRows: piece.length,
-            positionX: this.generateRandomPositionX(),
-            positionY: 0,
-            color: this.generateRandomColor(),
-            bidimensionalData: this.generateSpawnFigure()
-        }
         this.currentPiece.bidimensionalData.forEach((row, y) => {
             row.forEach((value, x) => {
                 if (value) {
@@ -89,7 +81,9 @@ export class TetrisGame extends Phaser.Scene {
                 }
             })
         })
+        //Pusheamos instancia
         this.ListGraphics.push(this.graphics);
+        //Eventos teclas
         document.addEventListener('keydown', event => {
             if(event.key === 'ArrowLeft'){
                 this.currentPiece.positionX --;
@@ -116,9 +110,15 @@ export class TetrisGame extends Phaser.Scene {
     }
 
     private inicializePropertiesFigure(): void {
-        this.currentPiece.positionX = 0;
-        this.currentPiece.positionY = 0;
-        this.currentPiece.bidimensionalData = [[]];
+        const piece: number[][] = JSON.parse(JSON.stringify(this.generateSpawnFigure()));
+        this.currentPiece = {
+            totalCols: piece[0].length,
+            totalRows: piece.length,
+            positionX: this.generateRandomPositionX(),
+            positionY: 0,
+            color: this.generateRandomColor(),
+            bidimensionalData: this.generateSpawnFigure()
+        }
         this.destroyedTime();
     };
 
