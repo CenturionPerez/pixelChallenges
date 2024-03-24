@@ -50,23 +50,48 @@ export class TetrisGame extends Phaser.Scene {
         this.graphics = this.add.graphics();
         this.graphics.fillStyle(0xFFFFFF); // Color blanco
         this.graphics.fillRect(0, 0, this.board[0].length * this.blockSize, this.board.length * this.blockSize);
+        this.graphics.lineStyle(1, 0x000000); // Borde negro con grosor 1
     
-        // Dibujar las celdas del tablero
+        // Dibujar las líneas de la cuadrícula
+        for (let row = 0; row <= this.board.length; row++) {
+            const y = row * this.blockSize;
+            this.graphics.beginPath();
+            this.graphics.moveTo(0, y);
+            this.graphics.lineTo(this.board[0].length * this.blockSize, y);
+            this.graphics.closePath();
+            this.graphics.strokePath();
+        }
+    
+        for (let col = 0; col <= this.board[0].length; col++) {
+            const x = col * this.blockSize;
+            this.graphics.beginPath();
+            this.graphics.moveTo(x, 0);
+            this.graphics.lineTo(x, this.board.length * this.blockSize);
+            this.graphics.closePath();
+            this.graphics.strokePath();
+        }
+    
+        // Dibujar las celdas ocupadas en el tablero
         for (let row = 0; row < this.board.length; row++) {
             for (let col = 0; col < this.board[row].length; col++) {
-                const x = col * this.blockSize;
-                const y = row * this.blockSize;
-                // Dibujar el borde de la celda
-                this.graphics.lineStyle(1, 0x000000); // Borde negro con grosor 1
-                this.graphics.strokeRect(x, y, this.blockSize, this.blockSize);
+                if (this.board[row][col] === 1) {
+                    const x = col * this.blockSize;
+                    const y = row * this.blockSize; 
+                    // Dibujar el borde de la celda
+                    this.graphics.strokeRect(x, y, this.blockSize, this.blockSize);
+                    // Rellenar la celda con el color de la pieza
+                    this.graphics.fillStyle(this.currentPiece.color);
+                    this.graphics.fillRect(x, y, this.blockSize, this.blockSize);
+                }
             }
         }
     }
     
+    
 
     private drawPrice(): void {
         //Creamos intancia grafica
-        this.graphics = Phaser.Scene.prototype.add.graphics();
+        this.graphics = this.add.graphics();
         //Inicializamos datos pieza
         this.inicializePropertiesFigure();
         this.currentPiece.bidimensionalData.forEach((row, y) => {
