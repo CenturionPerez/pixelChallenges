@@ -16,6 +16,7 @@ export class TetrisGame extends Phaser.Scene {
         bidimensionalData: [[]]
     }
     private timerEvent: Phaser.Time.TimerEvent | undefined;
+    private ListGraphics: Phaser.GameObjects.Graphics[] = [];
 
     constructor() {
         super({key: 'game'});
@@ -45,26 +46,32 @@ export class TetrisGame extends Phaser.Scene {
     }
 
     private drawBoard() {
-        // Dibujar el tablero
+        // Dibujar el fondo del tablero
+        this.graphics = this.add.graphics();
+        this.graphics.fillStyle(0xFFFFFF); // Color blanco
+        this.graphics.fillRect(0, 0, this.board[0].length * this.blockSize, this.board.length * this.blockSize);
+    
+        // Dibujar las celdas del tablero
         for (let row = 0; row < this.board.length; row++) {
-          for (let col = 0; col < this.board[row].length; col++) {
-            const x = col * this.blockSize;
-            const y = row * this.blockSize;
-            
-            this.add.graphics().fillRect(x, y, this.blockSize, this.blockSize);
-          }
+            for (let col = 0; col < this.board[row].length; col++) {
+                const x = col * this.blockSize;
+                const y = row * this.blockSize;
+                // Dibujar el borde de la celda
+                this.graphics.lineStyle(1, 0x000000); // Borde negro con grosor 1
+                this.graphics.strokeRect(x, y, this.blockSize, this.blockSize);
+            }
         }
     }
+    
 
     private drawPrice(): void {
         this.inicializePropertiesFigure();
         //Creamos intancia grafica y pusheamos
         this.graphics = this.add.graphics();
-        const piece: number[][] = this.generateSpawnFigure();
-        // Dibujar figura
+        const piece: number[][] = JSON.parse(JSON.stringify(this.generateSpawnFigure()));
         this.currentPiece = {
-            totalCols: piece.length,
-            totalRows: piece[0].length,
+            totalCols: piece[0].length,
+            totalRows: piece.length,
             positionX: this.generateRandomPositionX(),
             positionY: 0,
             color: this.generateRandomColor(),
@@ -73,13 +80,38 @@ export class TetrisGame extends Phaser.Scene {
         this.currentPiece.bidimensionalData.forEach((row, y) => {
             row.forEach((value, x) => {
                 if (value) {
+                    const valX = x + this.currentPiece.positionX * this.blockSize;
+                    const valY = y + this.currentPiece.positionY * this.blockSize;
                     this.graphics.fillStyle(this.currentPiece.color);
-                    this.graphics.fillRect((x + this.currentPiece.positionX) * this.blockSize,
-                    (y + this.currentPiece.positionY) * this.blockSize , this.blockSize, this.blockSize);
+                    this.graphics.lineStyle(1, 0x000000); // Borde negro con grosor 1
+                    this.graphics.strokeRect(valX, valY, this.blockSize, this.blockSize);
+                    this.graphics.fillRect(valX, valY, this.blockSize, this.blockSize);
                 }
             })
         })
-        this.destroyedTime();
+        this.ListGraphics.push(this.graphics);
+        document.addEventListener('keydown', event => {
+            if(event.key === 'ArrowLeft'){
+                this.currentPiece.positionX --;
+                if(this.isThereCollision()){
+                    this.currentPiece.positionX ++;
+                }
+            }
+            if(event.key === 'ArrowRight'){
+                this.currentPiece.positionX ++;
+                if(this.isThereCollision()){
+                    this.currentPiece.positionX --;
+                }
+            }
+            if(event.key === 'ArrowDown'){
+                this.currentPiece.positionY ++;
+                if(this.isThereCollision()){
+                    this.solidification();
+                    console.log(this.board)
+                    this.drawPrice();
+                }
+            }
+        });
         this.createTime();
     }
 
@@ -87,6 +119,7 @@ export class TetrisGame extends Phaser.Scene {
         this.currentPiece.positionX = 0;
         this.currentPiece.positionY = 0;
         this.currentPiece.bidimensionalData = [[]];
+        this.destroyedTime();
     };
 
     private generateSpawnFigure(): number[][] {
@@ -115,45 +148,24 @@ export class TetrisGame extends Phaser.Scene {
     }
 
     private movePiece(): void {
-        console.log(this.board); 
         try {
-            const positionX = this.currentPiece.positionX;
-            const positionY = this.currentPiece.positionY;
-            document.addEventListener('keydown', event => {
-                if(event.key === 'ArrowLeft'){
-                    this.currentPiece.positionX --;
-                    if(this.isThereCollision()){
-                        this.currentPiece.positionX = positionX;
-                    }
-                }
-                if(event.key === 'ArrowRight'){
-                    this.currentPiece.positionX ++;
-                    if(this.isThereCollision()){
-                        this.currentPiece.positionX = positionX;
-                    }
-                }
-                if(event.key === 'ArrowDown'){
-                    this.currentPiece.positionY ++;
-                    if(this.isThereCollision()){
-                        this.currentPiece.positionY = positionY;
-                        // this.solidification();
-                        this.drawPrice();
-                    }
-                }
-            })
-            if(!this.isThereCollision()){
+            const totalY = this.currentPiece.positionY + this.currentPiece.totalRows;
+            if(!this.isThereCollision() && totalY < 39){
                 this.clearPiece();
                 this.reDrawPiece();
-            }else{
-                console.log("llegamos al final")
-                // this.solidification();
-                this.drawPrice();
+            } else {
+                console.log(this.board);
+                console.log("llegamos al final");
+                this.solidification(); // Solidificar la pieza en el tablero
+                this.clearPiece(); // Limpiar la pieza del canvas
+                this.drawPrice(); // Volver a dibujar la pieza
             }
         } catch (error) {
+            console.error(error);
             this.destroyedTime();
         }
-
     }
+    
 
     private destroyedTime(): void {
         if (this.timerEvent) {
@@ -164,7 +176,7 @@ export class TetrisGame extends Phaser.Scene {
     }
     private createTime(): void {
         this.timerEvent = this.time.addEvent({
-            delay: 100,
+            delay: 1000,
             callback: this.movePiece,
             callbackScope: this,
             loop: true // Hacer que se repita automáticamente
@@ -175,7 +187,7 @@ export class TetrisGame extends Phaser.Scene {
         return this.currentPiece.bidimensionalData.find((row, y) => {
             return row.find((value, x) => {
                 return value === 0 && 
-                    this.board[y + this.currentPiece.positionY]?.[this.currentPiece.positionX] !== 0 || 
+                    this.board[y + this.currentPiece.positionY]?.[x + this.currentPiece.positionX] !== 0 || 
                     this.currentPiece.positionY + this.currentPiece.totalRows > this.board.length
             })
         })
@@ -192,30 +204,29 @@ export class TetrisGame extends Phaser.Scene {
     private reDrawPiece(): void {
         this.currentPiece.positionY++;
         // Dibuja la pieza en su nueva posición
-        for(let row = 0; row < this.currentPiece.bidimensionalData.length; row++){
-            for(let col = 0; col < this.currentPiece.bidimensionalData[row].length; col++){
-                const x = (col + this.currentPiece.positionX) * this.blockSize;
-                const y = (row + this.currentPiece.positionY) * this.blockSize;
-                if (this.currentPiece.bidimensionalData[row][col] === 1) {
-                    this.board[row + this.currentPiece.positionY][col + this.currentPiece.positionX] = 1;
+        this.currentPiece.bidimensionalData.forEach((row, y) => {
+            row.forEach((value, x) => {
+                if (value === 1) {
+                    const valX = (x + this.currentPiece.positionX) * this.blockSize;
+                    const valY = (y + this.currentPiece.positionY) * this.blockSize;
                     this.graphics.fillStyle(this.currentPiece.color);
-                    this.graphics.fillRect(x, y, this.blockSize, this.blockSize);
+                    this.graphics.fillRect(valX, valY, this.blockSize, this.blockSize);
                 }
-            }
-        }
+            })
+        })
     }
 
-    private fixPiece(): void {
-        this.drawPrice();
+    private solidification(): void {
+        this.currentPiece.bidimensionalData.forEach((row, y) => {
+            row.forEach((value, x) => {
+                if (value === 1) {
+                    const posY = y + this.currentPiece.positionY;
+                    const posX = x + this.currentPiece.positionX;
+                    if (posY >= 0 && posY < this.board.length && posX >= 0 && posX < this.board[0].length) {
+                        this.board[posY][posX] = 1;
+                    } 
+                }
+            })
+        })
     }
-
-    // private solidification(): void {
-    //     this.currentPiece.bidimensionalData.forEach((row, y) => {
-    //         row.forEach((value, x) => {
-    //             if (value === 1) {
-    //                 this.board[y + this.currentPiece.positionY][x + this.currentPiece.positionX] = 1;
-    //             }
-    //         })
-    //     })
-    // }
 }
