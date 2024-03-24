@@ -89,6 +89,7 @@ export class TetrisGame extends Phaser.Scene {
     }
 
     private generateRandomPositionX(): number {
+        //Si la posicion donde empezaria a pintarse es 30, restamos a 30 la longitud para que no sobrepase la matriz horizaontalmente
         const position: number = Math.floor(Math.random() * 30);
         return position + this.numberColsPiece <= 30 ? position: 30 - this.numberColsPiece;
     }
