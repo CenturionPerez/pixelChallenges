@@ -1,8 +1,8 @@
 export interface PieceTetris {
-    totalRows: number,
-    totalCols: number,
     positionX: number,
     positionY: number,
-    color: number
+    color: string,
+    allPositionXFixed: number[],
+    allPositionYFixed: number[],
     bidimensionalData: number[][]
 }

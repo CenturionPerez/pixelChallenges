@@ -6,7 +6,14 @@
       <h2>Estará disponible proximamente</h2>
       <img src="../../assets/mainteniance.jpg" alt="mantenimiento">
     }@else {
-      <div id="game-container"></div>
+      <div>
+        <ng-container *ngIf="!isGameOver else gameOver">
+          <canvas #tetrisContainer></canvas>
+        </ng-container>
+        <ng-template #gameOver>
+          <img src='../../../../assets/gameOver.jpg'/>
+        </ng-template>
+      </div>
     }
   </div>
 
